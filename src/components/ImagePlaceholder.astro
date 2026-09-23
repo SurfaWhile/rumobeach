@@ -1,21 +1,18 @@
 ---
 interface Props {
 	label: string;
+	src?: string;
 	class?: string;
 }
 
-const { label, class: className = '' } = Astro.props;
+const { label, src, class: className = '' } = Astro.props;
 const seed = label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const imgSrc = src ?? `https://picsum.photos/seed/rumo-${seed}/1200/1200`;
 ---
 
 <div class:list={['overflow-hidden', className]}>
 	<div class="relative h-full w-full">
-		<img
-			src={`https://picsum.photos/seed/rumo-${seed}/1200/1200`}
-			alt=""
-			loading="lazy"
-			class="h-full w-full object-cover"
-		/>
+		<img src={imgSrc} alt="" loading="lazy" class="h-full w-full object-cover" />
 		<span
 			class="absolute bottom-2 left-2 rounded-full bg-rumo-navy/70 px-3 py-1 text-xs text-white"
 		>

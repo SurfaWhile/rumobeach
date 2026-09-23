@@ -10,7 +10,11 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
 	<!-- Hero -->
 	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center">
-		<ImagePlaceholder label="hero — oesters" class="absolute inset-0" />
+		<ImagePlaceholder
+			label="hero — oesters"
+			src="/images/placeholders/hero-oesters.jpg"
+			class="absolute inset-0"
+		/>
 		<div class="absolute inset-0 bg-rumo-navy/20"></div>
 		<h1
 			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
@@ -44,9 +48,21 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
 	<!-- Gallery strip -->
 	<section class="grid grid-cols-1 sm:grid-cols-3">
-		<ImagePlaceholder label="oesters op ijs" class="aspect-4/5" />
-		<ImagePlaceholder label="bar interieur" class="aspect-4/5" />
-		<ImagePlaceholder label="menukaarten" class="aspect-4/5" />
+		<ImagePlaceholder
+			label="oesters op ijs"
+			src="/images/placeholders/gallery-oesters-ijs.jpg"
+			class="aspect-4/5"
+		/>
+		<ImagePlaceholder
+			label="bar interieur"
+			src="/images/placeholders/gallery-bar-interieur.jpg"
+			class="aspect-4/5"
+		/>
+		<ImagePlaceholder
+			label="menukaarten"
+			src="/images/placeholders/gallery-menukaarten.jpg"
+			class="aspect-4/5"
+		/>
 	</section>
 
 	<!-- Entre o mar e a mesa -->
@@ -75,7 +91,11 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 					Reservar
 				</a>
 			</div>
-			<ImagePlaceholder label="strandstoelen bij zonsondergang" class="aspect-4/5" />
+			<ImagePlaceholder
+				label="strandstoelen bij zonsondergang"
+				src="/images/placeholders/strandstoelen-zonsondergang.jpg"
+				class="aspect-4/5"
+			/>
 		</div>
 	</section>
 
