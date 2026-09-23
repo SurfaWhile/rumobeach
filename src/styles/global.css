@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+	--color-rumo-navy: #1a2a4a;
+	--color-rumo-yellow: #e7e39c;
+	--color-rumo-pink: #eaa8cc;
+	--color-rumo-purple: #b1a7cf;
+	--color-rumo-cream: #f2e6ce;
+	--color-rumo-gold: #d9b65b;
+	--font-display: "Fraunces", ui-serif, Georgia, serif;
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}

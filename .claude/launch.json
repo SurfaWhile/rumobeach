@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rumo-beach",
+      "runtimeExecutable": "/Users/hans/.local/node-versions/node-v22.20.0-darwin-arm64/bin/npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    }
+  ]
+}

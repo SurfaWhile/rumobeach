@@ -1,54 +1,127 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const sections = [
-	{
-		title: 'Strandtent',
-		text: 'Lekker eten en drinken met de voeten in het zand — het menu volgt binnenkort.',
-	},
-	{
-		title: 'Surfschool',
-		text: 'Surflessen voor beginners en gevorderden, gegeven door lokale instructeurs.',
-	},
-	{
-		title: 'Verhuur',
-		text: 'Boards, wetsuits en strandbedjes te huur voor de hele dag.',
-	},
-];
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 ---
 
-<Layout>
-	<header class="border-b border-stone-200">
-		<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-			<span class="text-lg font-semibold tracking-tight">Rumo Beach</span>
-			<nav class="flex gap-6 text-sm">
-				<a href="#surfschool" class="hover:text-orange-600">Surfschool</a>
-				<a href="#strandtent" class="hover:text-orange-600">Strandtent</a>
-				<a href="#contact" class="hover:text-orange-600">Contact</a>
-			</nav>
+<Layout title="Rumo Beach — Beach Club & Surf Club, Baleal">
+	<Header />
+
+	<!-- Hero -->
+	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center">
+		<ImagePlaceholder label="hero — oesters" class="absolute inset-0" />
+		<div class="absolute inset-0 bg-rumo-navy/20"></div>
+		<h1
+			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
+		>
+			Beach Club
+		</h1>
+	</section>
+
+	<!-- Intro / Beach Club -->
+	<section id="beach-club" class="bg-rumo-yellow px-6 py-24 text-center">
+		<div class="mx-auto max-w-2xl">
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">
+				From tosta mista to oysters.
+			</h2>
+			<div class="mt-8 space-y-4 text-sm text-rumo-navy/80">
+				<p class="font-semibold">Bem-vindo ao Rumo Beach Baleal.</p>
+				<p>
+					Não prometemos o hoje. Não prometemos o amanhã. Não prometemos o mundo, as respostas ou
+					uma vida sem preocupações. Mas vamos fazer o nosso melhor para te fazer sorrir por
+					dentro. Pelo sol da manhã no rosto. Pela sensação de chegar e não ter para onde correr.
+				</p>
+			</div>
+			<a
+				href="#"
+				class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+			>
+				Menu
+			</a>
 		</div>
-	</header>
-
-	<section class="mx-auto max-w-5xl px-6 py-20 text-center">
-		<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Rumo Beach</h1>
-		<p class="mx-auto mt-4 max-w-xl text-stone-600">
-			Strandtent en surfschool — deze site is een startopzet, klaar om verder ingericht te
-			worden.
-		</p>
 	</section>
 
-	<section class="mx-auto grid max-w-5xl gap-8 px-6 pb-20 sm:grid-cols-3">
-		{
-			sections.map((s) => (
-				<div class="rounded-xl border border-stone-200 p-6">
-					<h2 class="font-semibold">{s.title}</h2>
-					<p class="mt-2 text-sm text-stone-600">{s.text}</p>
+	<!-- Gallery strip -->
+	<section class="grid grid-cols-1 sm:grid-cols-3">
+		<ImagePlaceholder label="oesters op ijs" class="aspect-4/5" />
+		<ImagePlaceholder label="bar interieur" class="aspect-4/5" />
+		<ImagePlaceholder label="menukaarten" class="aspect-4/5" />
+	</section>
+
+	<!-- Entre o mar e a mesa -->
+	<section class="bg-rumo-pink px-6 py-24">
+		<div class="mx-auto grid max-w-5xl gap-12 sm:grid-cols-2 sm:items-center">
+			<div>
+				<h2 class="font-display text-3xl font-semibold sm:text-4xl">Entre o mar e a mesa.</h2>
+				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
+					<p>Convidamos-te a sentar à mesa ou a ficar ao balcão.</p>
+					<p>
+						A ouvir pedaços de conversas e, sem darem por isso, acabarem por fazer parte delas. A
+						perder a noção do tempo enquanto as crianças brincam na areia. A ficar para mais um
+						café, mais uma história, mais um copo do que tinhas planeado.
+					</p>
+					<p>Não te prometemos o para sempre.</p>
+					<p>
+						Mas talvez possamos ser o primeiro raio de sol da manhã. Familiar, reconfortante e com
+						vontade de voltar.
+					</p>
+					<p>Não te prometemos o mundo. Mas gostaríamos simplesmente de fazer parte do teu dia.</p>
 				</div>
-			))
-		}
+				<a
+					href="#"
+					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+				>
+					Reservar
+				</a>
+			</div>
+			<ImagePlaceholder label="strandstoelen bij zonsondergang" class="aspect-4/5" />
+		</div>
 	</section>
 
-	<footer id="contact" class="border-t border-stone-200 py-10 text-center text-sm text-stone-500">
-		Rumo Beach
-	</footer>
+	<!-- Surf club -->
+	<section id="surf-club" class="bg-rumo-purple px-6 py-24 text-center">
+		<div class="mx-auto max-w-2xl">
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">Vem ter connosco.</h2>
+			<p class="mt-6 text-sm text-rumo-navy/80">
+				Entre a costa do Baleal e Peniche, o nosso surf club é um espaço pensado para surfistas de
+				todos os níveis e todas as idades.
+			</p>
+		</div>
+		<div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-xl">
+			<iframe
+				title="Rumo Beach op de kaart"
+				class="h-96 w-full border-0"
+				loading="lazy"
+				src="https://www.google.com/maps?q=Rua+Praia+do+Baleal,+Baleal+S%2FN,+2520-051+Ferrel,+Portugal&output=embed"
+			></iframe>
+		</div>
+	</section>
+
+	<!-- Newsletter -->
+	<section class="bg-rumo-cream px-6 py-24 text-center" id="contactos">
+		<div class="mx-auto max-w-xl">
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">Junta-te ao Rumo.</h2>
+			<p class="mt-4 text-sm text-rumo-navy/70">
+				Recebe novidades, eventos e momentos especiais em primeira mão.
+			</p>
+			<form class="mt-8 flex flex-col gap-3 sm:flex-row">
+				<input
+					type="email"
+					required
+					placeholder="O teu email"
+					class="w-full rounded-full border border-rumo-navy/30 bg-white px-5 py-3 text-sm"
+				/>
+				<button
+					type="submit"
+					class="rounded-full bg-rumo-yellow px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-gold"
+				>
+					Seguir
+				</button>
+			</form>
+		</div>
+	</section>
+
+	<div id="equipa"></div>
+	<Footer />
 </Layout>
