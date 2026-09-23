@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sections = [
+	{
+		title: 'Strandtent',
+		text: 'Lekker eten en drinken met de voeten in het zand — het menu volgt binnenkort.',
+	},
+	{
+		title: 'Surfschool',
+		text: 'Surflessen voor beginners en gevorderden, gegeven door lokale instructeurs.',
+	},
+	{
+		title: 'Verhuur',
+		text: 'Boards, wetsuits en strandbedjes te huur voor de hele dag.',
+	},
+];
+---
+
+<Layout>
+	<header class="border-b border-stone-200">
+		<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+			<span class="text-lg font-semibold tracking-tight">Rumo Beach</span>
+			<nav class="flex gap-6 text-sm">
+				<a href="#surfschool" class="hover:text-orange-600">Surfschool</a>
+				<a href="#strandtent" class="hover:text-orange-600">Strandtent</a>
+				<a href="#contact" class="hover:text-orange-600">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<section class="mx-auto max-w-5xl px-6 py-20 text-center">
+		<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Rumo Beach</h1>
+		<p class="mx-auto mt-4 max-w-xl text-stone-600">
+			Strandtent en surfschool — deze site is een startopzet, klaar om verder ingericht te
+			worden.
+		</p>
+	</section>
+
+	<section class="mx-auto grid max-w-5xl gap-8 px-6 pb-20 sm:grid-cols-3">
+		{
+			sections.map((s) => (
+				<div class="rounded-xl border border-stone-200 p-6">
+					<h2 class="font-semibold">{s.title}</h2>
+					<p class="mt-2 text-sm text-stone-600">{s.text}</p>
+				</div>
+			))
+		}
+	</section>
+
+	<footer id="contact" class="border-t border-stone-200 py-10 text-center text-sm text-stone-500">
+		Rumo Beach
+	</footer>
+</Layout>
