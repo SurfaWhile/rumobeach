@@ -2,19 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 ---
 
 <Layout title="Rumo Beach — Beach Club & Surf Club, Baleal">
 	<Header />
 
 	<!-- Hero -->
-	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center">
-		<ImagePlaceholder
-			label="hero — oesters"
-			src="/images/placeholders/hero-oesters.jpg"
-			class="absolute inset-0"
-		/>
+	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center overflow-hidden">
+		<video
+			class="absolute inset-0 h-full w-full object-cover"
+			src="/images/rumobeach/video/wave-sweeping.mp4"
+			poster="/images/rumobeach/drone-beach-1.jpg"
+			autoplay
+			muted
+			loop
+			playsinline
+		></video>
 		<div class="absolute inset-0 bg-rumo-navy/20"></div>
 		<h1
 			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
@@ -48,21 +51,9 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 
 	<!-- Gallery strip -->
 	<section class="grid grid-cols-1 sm:grid-cols-3">
-		<ImagePlaceholder
-			label="oesters op ijs"
-			src="/images/placeholders/gallery-oesters-ijs.jpg"
-			class="aspect-4/5"
-		/>
-		<ImagePlaceholder
-			label="bar interieur"
-			src="/images/placeholders/gallery-bar-interieur.jpg"
-			class="aspect-4/5"
-		/>
-		<ImagePlaceholder
-			label="menukaarten"
-			src="/images/placeholders/gallery-menukaarten.jpg"
-			class="aspect-4/5"
-		/>
+		<img src="/images/rumobeach/food-1.jpg" alt="Ontbijtbowl met vers fruit" class="aspect-4/5 w-full object-cover" />
+		<img src="/images/rumobeach/food-2.jpg" alt="French toast en cocktail met zeezicht" class="aspect-4/5 w-full object-cover" />
+		<img src="/images/rumobeach/food-5.jpg" alt="Schaal met oesters en gamba's" class="aspect-4/5 w-full object-cover" />
 	</section>
 
 	<!-- Entre o mar e a mesa -->
@@ -91,10 +82,10 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 					Reservar
 				</a>
 			</div>
-			<ImagePlaceholder
-				label="strandstoelen bij zonsondergang"
-				src="/images/placeholders/strandstoelen-zonsondergang.jpg"
-				class="aspect-4/5"
+			<img
+				src="/images/rumobeach/beach-photo.jpg"
+				alt="Rumo Beach aan het strand van Baleal"
+				class="aspect-4/5 w-full rounded-xl object-cover"
 			/>
 		</div>
 	</section>
@@ -108,7 +99,12 @@ import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 				todos os níveis e todas as idades.
 			</p>
 		</div>
-		<div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-xl">
+		<img
+			src="/images/rumobeach/surfer-sunset-silhouette.jpg"
+			alt="Surflessen op het strand van Baleal"
+			class="mx-auto mt-10 aspect-21/9 w-full max-w-5xl rounded-xl object-cover"
+		/>
+		<div class="mx-auto mt-6 max-w-5xl overflow-hidden rounded-xl">
 			<iframe
 				title="Rumo Beach op de kaart"
 				class="h-96 w-full border-0"
