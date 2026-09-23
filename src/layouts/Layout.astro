@@ -27,8 +27,19 @@ const {
 			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
+		<script is:inline defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+		></script>
 	</head>
 	<body class="min-h-screen bg-rumo-cream font-sans text-rumo-navy antialiased">
 		<slot />
+		<script is:inline>
+			if (window.netlifyIdentity) {
+				window.netlifyIdentity.on('init', (user) => {
+					if (!user && window.location.hash.includes('token')) {
+						window.location.href = '/admin/' + window.location.hash;
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

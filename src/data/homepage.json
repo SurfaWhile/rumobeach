@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "title": "Beach Club",
+    "video": "/images/rumobeach/video/wave-sweeping.mp4",
+    "poster": "/images/rumobeach/drone-beach-1.jpg"
+  },
+  "intro": {
+    "heading": "From tosta mista to oysters.",
+    "subheading": "Bem-vindo ao Rumo Beach Baleal.",
+    "body": "Não prometemos o hoje. Não prometemos o amanhã. Não prometemos o mundo, as respostas ou uma vida sem preocupações. Mas vamos fazer o nosso melhor para te fazer sorrir por dentro. Pelo sol da manhã no rosto. Pela sensação de chegar e não ter para onde correr.",
+    "buttonLabel": "Menu",
+    "buttonHref": "#"
+  },
+  "gallery": [
+    { "image": "/images/rumobeach/food-1.jpg", "alt": "Ontbijtbowl met vers fruit" },
+    { "image": "/images/rumobeach/food-2.jpg", "alt": "French toast en cocktail met zeezicht" },
+    { "image": "/images/rumobeach/food-5.jpg", "alt": "Schaal met oesters en gamba's" }
+  ],
+  "marEMesa": {
+    "heading": "Entre o mar e a mesa.",
+    "paragraphs": [
+      "Convidamos-te a sentar à mesa ou a ficar ao balcão.",
+      "A ouvir pedaços de conversas e, sem darem por isso, acabarem por fazer parte delas. A perder a noção do tempo enquanto as crianças brincam na areia. A ficar para mais um café, mais uma história, mais um copo do que tinhas planeado.",
+      "Não te prometemos o para sempre.",
+      "Mas talvez possamos ser o primeiro raio de sol da manhã. Familiar, reconfortante e com vontade de voltar.",
+      "Não te prometemos o mundo. Mas gostaríamos simplesmente de fazer parte do teu dia."
+    ],
+    "buttonLabel": "Reservar",
+    "buttonHref": "#",
+    "image": "/images/rumobeach/beach-photo.jpg"
+  },
+  "surfClub": {
+    "heading": "Vem ter connosco.",
+    "body": "Entre a costa do Baleal e Peniche, o nosso surf club é um espaço pensado para surfistas de todos os níveis e todas as idades.",
+    "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
+    "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
+  },
+  "newsletter": {
+    "heading": "Junta-te ao Rumo.",
+    "body": "Recebe novidades, eventos e momentos especiais em primeira mão.",
+    "buttonLabel": "Seguir"
+  },
+  "footer": {
+    "addressLine1": "Rua Praia do Baleal, Baleal S/N",
+    "addressLine2": "2520-051 Ferrel, Portugal",
+    "hours": "Aberto todos os dias, das 9h à meia-noite.",
+    "email": "hello@rumobeach.com",
+    "phoneLabel": "(+351) 925 310 525",
+    "phoneHref": "https://wa.link/nexiab",
+    "facebook": "https://www.facebook.com/profile.php?id=61588020290619",
+    "instagram": "https://www.instagram.com/rumobeach/"
+  }
+}

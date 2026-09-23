@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import content from '../data/homepage.json';
+
+const { hero, intro, gallery, marEMesa, surfClub, newsletter } = content;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapAddress)}&output=embed`;
 ---
 
 <Layout title="Rumo Beach — Beach Club & Surf Club, Baleal">
@@ -11,8 +15,8 @@ import Footer from '../components/Footer.astro';
 	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center overflow-hidden">
 		<video
 			class="absolute inset-0 h-full w-full object-cover"
-			src="/images/rumobeach/video/wave-sweeping.mp4"
-			poster="/images/rumobeach/drone-beach-1.jpg"
+			src={hero.video}
+			poster={hero.poster}
 			autoplay
 			muted
 			loop
@@ -22,68 +26,53 @@ import Footer from '../components/Footer.astro';
 		<h1
 			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
 		>
-			Beach Club
+			{hero.title}
 		</h1>
 	</section>
 
 	<!-- Intro / Beach Club -->
 	<section id="beach-club" class="bg-rumo-yellow px-6 py-24 text-center">
 		<div class="mx-auto max-w-2xl">
-			<h2 class="font-display text-3xl font-semibold sm:text-4xl">
-				From tosta mista to oysters.
-			</h2>
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{intro.heading}</h2>
 			<div class="mt-8 space-y-4 text-sm text-rumo-navy/80">
-				<p class="font-semibold">Bem-vindo ao Rumo Beach Baleal.</p>
-				<p>
-					Não prometemos o hoje. Não prometemos o amanhã. Não prometemos o mundo, as respostas ou
-					uma vida sem preocupações. Mas vamos fazer o nosso melhor para te fazer sorrir por
-					dentro. Pelo sol da manhã no rosto. Pela sensação de chegar e não ter para onde correr.
-				</p>
+				<p class="font-semibold">{intro.subheading}</p>
+				<p>{intro.body}</p>
 			</div>
 			<a
-				href="#"
+				href={intro.buttonHref}
 				class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
 			>
-				Menu
+				{intro.buttonLabel}
 			</a>
 		</div>
 	</section>
 
 	<!-- Gallery strip -->
 	<section class="grid grid-cols-1 sm:grid-cols-3">
-		<img src="/images/rumobeach/food-1.jpg" alt="Ontbijtbowl met vers fruit" class="aspect-4/5 w-full object-cover" />
-		<img src="/images/rumobeach/food-2.jpg" alt="French toast en cocktail met zeezicht" class="aspect-4/5 w-full object-cover" />
-		<img src="/images/rumobeach/food-5.jpg" alt="Schaal met oesters en gamba's" class="aspect-4/5 w-full object-cover" />
+		{
+			gallery.map((item) => (
+				<img src={item.image} alt={item.alt} class="aspect-4/5 w-full object-cover" />
+			))
+		}
 	</section>
 
 	<!-- Entre o mar e a mesa -->
 	<section class="bg-rumo-pink px-6 py-24">
 		<div class="mx-auto grid max-w-5xl gap-12 sm:grid-cols-2 sm:items-center">
 			<div>
-				<h2 class="font-display text-3xl font-semibold sm:text-4xl">Entre o mar e a mesa.</h2>
+				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{marEMesa.heading}</h2>
 				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
-					<p>Convidamos-te a sentar à mesa ou a ficar ao balcão.</p>
-					<p>
-						A ouvir pedaços de conversas e, sem darem por isso, acabarem por fazer parte delas. A
-						perder a noção do tempo enquanto as crianças brincam na areia. A ficar para mais um
-						café, mais uma história, mais um copo do que tinhas planeado.
-					</p>
-					<p>Não te prometemos o para sempre.</p>
-					<p>
-						Mas talvez possamos ser o primeiro raio de sol da manhã. Familiar, reconfortante e com
-						vontade de voltar.
-					</p>
-					<p>Não te prometemos o mundo. Mas gostaríamos simplesmente de fazer parte do teu dia.</p>
+					{marEMesa.paragraphs.map((p) => <p>{p}</p>)}
 				</div>
 				<a
-					href="#"
+					href={marEMesa.buttonHref}
 					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
 				>
-					Reservar
+					{marEMesa.buttonLabel}
 				</a>
 			</div>
 			<img
-				src="/images/rumobeach/beach-photo.jpg"
+				src={marEMesa.image}
 				alt="Rumo Beach aan het strand van Baleal"
 				class="aspect-4/5 w-full rounded-xl object-cover"
 			/>
@@ -93,14 +82,11 @@ import Footer from '../components/Footer.astro';
 	<!-- Surf club -->
 	<section id="surf-club" class="bg-rumo-purple px-6 py-24 text-center">
 		<div class="mx-auto max-w-2xl">
-			<h2 class="font-display text-3xl font-semibold sm:text-4xl">Vem ter connosco.</h2>
-			<p class="mt-6 text-sm text-rumo-navy/80">
-				Entre a costa do Baleal e Peniche, o nosso surf club é um espaço pensado para surfistas de
-				todos os níveis e todas as idades.
-			</p>
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{surfClub.heading}</h2>
+			<p class="mt-6 text-sm text-rumo-navy/80">{surfClub.body}</p>
 		</div>
 		<img
-			src="/images/rumobeach/surfer-sunset-silhouette.jpg"
+			src={surfClub.image}
 			alt="Surflessen op het strand van Baleal"
 			class="mx-auto mt-10 aspect-21/9 w-full max-w-5xl rounded-xl object-cover"
 		/>
@@ -109,7 +95,7 @@ import Footer from '../components/Footer.astro';
 				title="Rumo Beach op de kaart"
 				class="h-96 w-full border-0"
 				loading="lazy"
-				src="https://www.google.com/maps?q=Rua+Praia+do+Baleal,+Baleal+S%2FN,+2520-051+Ferrel,+Portugal&output=embed"
+				src={mapSrc}
 			></iframe>
 		</div>
 	</section>
@@ -117,10 +103,8 @@ import Footer from '../components/Footer.astro';
 	<!-- Newsletter -->
 	<section class="bg-rumo-cream px-6 py-24 text-center" id="contactos">
 		<div class="mx-auto max-w-xl">
-			<h2 class="font-display text-3xl font-semibold sm:text-4xl">Junta-te ao Rumo.</h2>
-			<p class="mt-4 text-sm text-rumo-navy/70">
-				Recebe novidades, eventos e momentos especiais em primeira mão.
-			</p>
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{newsletter.heading}</h2>
+			<p class="mt-4 text-sm text-rumo-navy/70">{newsletter.body}</p>
 			<form class="mt-8 flex flex-col gap-3 sm:flex-row">
 				<input
 					type="email"
@@ -132,7 +116,7 @@ import Footer from '../components/Footer.astro';
 					type="submit"
 					class="rounded-full bg-rumo-yellow px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-gold"
 				>
-					Seguir
+					{newsletter.buttonLabel}
 				</button>
 			</form>
 		</div>
