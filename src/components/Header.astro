@@ -1,35 +1,51 @@
 ---
+interface Props {
+	transparent?: boolean;
+}
+
+const { transparent = true } = Astro.props;
+
 const links = {
 	left: [
-		{ href: '#surf-club', label: 'Surf Club' },
-		{ href: '#beach-club', label: 'Beach Club' },
+		{ href: '/surf-club/', label: 'Surf Club' },
+		{ href: '/beach-club/', label: 'Beach Club' },
 	],
 	right: [
-		{ href: '#contactos', label: 'Contactos' },
-		{ href: '#equipa', label: 'Equipa' },
+		{ href: '/#contactos', label: 'Contactos' },
+		{ href: '/#equipa', label: 'Equipa' },
 		{ href: '#', label: 'EN' },
 	],
 };
+
+const headerClass = transparent
+	? 'absolute inset-x-0 top-0 z-10 text-white'
+	: 'relative z-10 border-b border-rumo-navy/10 bg-rumo-cream text-rumo-navy';
+
+const linkClass = transparent ? 'hover:text-rumo-gold' : 'hover:text-rumo-gold';
 ---
 
-<header class="absolute inset-x-0 top-0 z-10 text-white">
+<header class={headerClass}>
 	<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
 		<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
 			{
 				links.left.map((l) => (
-					<a href={l.href} class="hover:text-rumo-gold">
+					<a href={l.href} class={linkClass}>
 						{l.label}
 					</a>
 				))
 			}
 		</nav>
-		<a href="#">
-			<img src="/images/rumobeach/logo-amarelo.png" alt="Rumo Beach" class="h-10 w-auto" />
+		<a href="/">
+			<img
+				src="/images/rumobeach/logo-amarelo.png"
+				alt="Rumo Beach"
+				class:list={['h-10 w-auto', { 'brightness-0': !transparent }]}
+			/>
 		</a>
 		<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
 			{
 				links.right.map((l) => (
-					<a href={l.href} class="hover:text-rumo-gold">
+					<a href={l.href} class={linkClass}>
 						{l.label}
 					</a>
 				))

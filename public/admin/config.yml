@@ -82,3 +82,27 @@ collections:
               - { label: "Telefoon (link, bv. WhatsApp)", name: "phoneHref", widget: "string" }
               - { label: "Facebook-link", name: "facebook", widget: "string" }
               - { label: "Instagram-link", name: "instagram", widget: "string" }
+
+      - file: "src/data/surfClub.json"
+        name: "surfClub"
+        label: "Surf Club pagina"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "body", widget: "text" }
+              - { label: "Achtergrondfoto", name: "image", widget: "image" }
+
+          - label: "Aanbod (kaarten)"
+            name: "offerings"
+            widget: "list"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Tekst", name: "body", widget: "text" }
+
+          - { label: "Knoptekst (CTA)", name: "ctaLabel", widget: "string" }
+          - { label: "Knoplink (CTA)", name: "ctaHref", widget: "string" }
+          - { label: "Foto (surflessen)", name: "image", widget: "image" }
+          - { label: "Adres voor kaart", name: "mapAddress", widget: "string" }

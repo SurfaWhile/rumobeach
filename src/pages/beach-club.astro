@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import content from '../data/homepage.json';
+
+const { intro, gallery, marEMesa } = content;
+---
+
+<Layout
+	title="Beach Club — Rumo Beach Baleal"
+	description="Restaurante, café en bar aan het strand van Baleal — van tosta mista tot oesters."
+>
+	<Header transparent={false} />
+
+	<!-- Page hero -->
+	<section class="relative flex h-[45vh] min-h-[320px] items-center justify-center overflow-hidden">
+		<img
+			src="/images/rumobeach/food-5.jpg"
+			alt=""
+			class="absolute inset-0 h-full w-full object-cover"
+		/>
+		<div class="absolute inset-0 bg-rumo-navy/30"></div>
+		<h1 class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl">
+			Beach Club
+		</h1>
+	</section>
+
+	<!-- Intro -->
+	<section class="bg-rumo-yellow px-6 py-24 text-center">
+		<div class="mx-auto max-w-2xl">
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{intro.heading}</h2>
+			<div class="mt-8 space-y-4 text-sm text-rumo-navy/80">
+				<p class="font-semibold">{intro.subheading}</p>
+				<p>{intro.body}</p>
+			</div>
+			<a
+				href={intro.buttonHref}
+				class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+			>
+				{intro.buttonLabel}
+			</a>
+		</div>
+	</section>
+
+	<!-- Gallery strip -->
+	<section class="grid grid-cols-1 sm:grid-cols-3">
+		{
+			gallery.map((item) => (
+				<img src={item.image} alt={item.alt} class="aspect-4/5 w-full object-cover" />
+			))
+		}
+	</section>
+
+	<!-- Entre o mar e a mesa -->
+	<section class="bg-rumo-pink px-6 py-24">
+		<div class="mx-auto grid max-w-5xl gap-12 sm:grid-cols-2 sm:items-center">
+			<div>
+				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{marEMesa.heading}</h2>
+				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
+					{marEMesa.paragraphs.map((p) => <p>{p}</p>)}
+				</div>
+				<a
+					href={marEMesa.buttonHref}
+					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+				>
+					{marEMesa.buttonLabel}
+				</a>
+			</div>
+			<img
+				src={marEMesa.image}
+				alt="Rumo Beach aan het strand van Baleal"
+				class="aspect-4/5 w-full rounded-xl object-cover"
+			/>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>

@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import surfClub from '../data/surfClub.json';
+
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapAddress)}&output=embed`;
+---
+
+<Layout
+	title="Surf Club — Rumo Beach Baleal"
+	description="Surflessen, coaching en verhuur voor alle niveaus, tussen Baleal en Peniche."
+>
+	<Header transparent={false} />
+
+	<!-- Page hero -->
+	<section class="relative flex h-[50vh] min-h-[360px] items-center justify-center overflow-hidden">
+		<img src={surfClub.hero.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<div class="absolute inset-0 bg-rumo-navy/40"></div>
+		<div class="relative mx-auto max-w-2xl px-6 text-center text-white">
+			<h1 class="font-display text-4xl font-bold tracking-wide uppercase sm:text-5xl">
+				{surfClub.hero.title}
+			</h1>
+			<p class="mt-4 text-sm text-white/90">{surfClub.hero.body}</p>
+		</div>
+	</section>
+
+	<!-- Offerings -->
+	<section class="bg-rumo-purple px-6 py-24">
+		<div class="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				surfClub.offerings.map((o) => (
+					<div class="rounded-xl border border-rumo-navy/10 bg-rumo-cream p-6">
+						<h2 class="font-display text-xl font-semibold">{o.title}</h2>
+						<p class="mt-2 text-sm text-rumo-navy/80">{o.body}</p>
+					</div>
+				))
+			}
+		</div>
+		<div class="mt-12 text-center">
+			<a
+				href={surfClub.ctaHref}
+				class="inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+			>
+				{surfClub.ctaLabel}
+			</a>
+		</div>
+	</section>
+
+	<!-- Photo + map -->
+	<img
+		src={surfClub.image}
+		alt="Surflessen op het strand van Baleal"
+		class="h-[45vh] min-h-[320px] w-full object-cover"
+	/>
+	<section class="bg-rumo-cream px-6 py-16">
+		<div class="mx-auto max-w-5xl overflow-hidden rounded-xl">
+			<iframe
+				title="Rumo Beach op de kaart"
+				class="h-96 w-full border-0"
+				loading="lazy"
+				src={mapSrc}
+			></iframe>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
