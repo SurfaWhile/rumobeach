@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+import { absUrl, businessJsonLd, site } from '../../i18n/site';
+
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/contactos/';
+const page = await getContent(locale, 'contactos');
+const { footer } = await getContent(locale, 'homepage');
+const ui = await getContent(locale, 'ui');
+const mapSrc =
+	page.mapEmbedUrl ||
+	`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=15&output=embed`;
+
+const jsonLd = businessJsonLd({
+	type: 'Restaurant',
+	url: absUrl(localePath(locale, path)),
+	description: page.meta.description,
+	image: absUrl(site.defaultOgImage),
+});
+---
+
+<Layout
+	locale={locale}
+	path={path}
+	title={page.meta.title}
+	description={page.meta.description}
+	jsonLd={jsonLd}
+>
+	<Header locale={locale} path={path} transparent={false} />
+
+	<section class="bg-rumo-yellow px-6 py-20">
+		<div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[3fr_2fr] lg:items-center">
+			<div class="overflow-hidden rounded-xl">
+				<iframe title={ui.mapTitle} class="h-[28rem] w-full border-0" loading="lazy" src={mapSrc}
+				></iframe>
+			</div>
+
+			<div class="text-center">
+				<h1 class="font-display text-4xl font-semibold sm:text-5xl">{page.heading}</h1>
+				<div class="mx-auto mt-5 h-0.5 w-24 bg-rumo-navy/40"></div>
+
+				<h2 class="font-display mt-8 text-xl font-semibold tracking-wide uppercase">{page.name}</h2>
+
+				<address class="mt-6 text-rumo-navy/80 not-italic">
+					<p>{footer.addressLine1},</p>
+					<p>{footer.addressLine2}</p>
+				</address>
+
+				<div class="mt-6 space-y-1 text-rumo-navy/80">
+					<p>
+						{page.phoneLabel}{' '}
+						<a href={`tel:${site.telephone}`} class="hover:text-rumo-navy hover:underline">
+							{footer.phoneLabel}
+						</a>
+					</p>
+					<p>
+						{page.emailLabel}{' '}
+						<a href={`mailto:${footer.email}`} class="hover:text-rumo-navy hover:underline">
+							{footer.email}
+						</a>
+					</p>
+				</div>
+
+				<p class="mt-6 text-sm font-medium tracking-wide text-rumo-navy/80 uppercase">
+					{page.hours}
+				</p>
+
+				<a
+					href={footer.phoneHref}
+					target="_blank"
+					rel="noopener"
+					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+				>
+					{page.whatsappLabel}
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<Footer locale={locale} />
+</Layout>
