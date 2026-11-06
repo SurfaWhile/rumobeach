@@ -6,5 +6,40 @@
   "hero": {
     "title": "Beach Club",
     "image": "/images/rumobeach/food-5.jpg"
+  },
+  "intro": {
+    "heading": "From tosta mista to oysters.",
+    "subheading": "Welcome to Rumo Beach Baleal.",
+    "body": "We don't promise today. We don't promise tomorrow. We don't promise the world, the answers or a life without worries. But we'll do our best to make you smile on the inside. For the morning sun on your face. For the feeling of arriving with nowhere to run to.",
+    "buttonLabel": "Menu",
+    "buttonHref": "#"
+  },
+  "gallery": [
+    {
+      "image": "/images/rumobeach/food-1.jpg",
+      "alt": "Breakfast bowl with fresh fruit"
+    },
+    {
+      "image": "/images/rumobeach/food-2.jpg",
+      "alt": "French toast and a cocktail by the sea"
+    },
+    {
+      "image": "/images/rumobeach/food-5.jpg",
+      "alt": "Platter of oysters and prawns"
+    }
+  ],
+  "marEMesa": {
+    "heading": "Between the sea and the table.",
+    "paragraphs": [
+      "We invite you to sit at a table or stay at the bar.",
+      "To overhear snatches of conversation and, without realising it, become part of them. To lose track of time while the children play on the sand. To stay for one more coffee, one more story, one more drink than you had planned.",
+      "We don't promise forever.",
+      "But maybe we can be the first ray of morning sun. Familiar, comforting and making you want to come back.",
+      "We don't promise the world. But we'd simply like to be part of your day."
+    ],
+    "buttonLabel": "Book a table",
+    "buttonHref": "#",
+    "image": "/images/rumobeach/beach-photo.jpg",
+    "imageAlt": "Rumo Beach on Baleal beach"
   }
 }

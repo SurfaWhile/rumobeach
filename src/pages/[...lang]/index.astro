@@ -14,12 +14,13 @@ export function getStaticPaths() {
 
 const locale = localeFromParams(Astro.params.lang);
 const path = '/';
-const { meta, hero, intro, gallery, marEMesa, surfClub, newsletter } = await getContent(
+const { meta, hero, intro, cards, story, around, newsletter } = await getContent(
 	locale,
 	'homepage',
 );
 const ui = await getContent(locale, 'ui');
-const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapAddress)}&output=embed`;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(around.mapAddress)}&output=embed`;
+const posterUrl = imgUrl(hero.poster, 1280, 'webp');
 
 const jsonLd = [
 	websiteJsonLd({ inLanguage: locales[locale].htmlLang }),
@@ -30,7 +31,9 @@ const jsonLd = [
 		image: absUrl(hero.poster),
 	}),
 ];
-const posterUrl = imgUrl(hero.poster, 1280, 'webp');
+
+const button =
+	'mt-6 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white';
 ---
 
 <Layout
@@ -55,8 +58,7 @@ const posterUrl = imgUrl(hero.poster, 1280, 'webp');
 			muted
 			loop
 			playsinline
-			aria-hidden="true"
-		></video>
+			aria-hidden="true"></video>
 		<script is:inline>
 			(() => {
 				const video = document.getElementById('hero-video');
@@ -73,83 +75,88 @@ const posterUrl = imgUrl(hero.poster, 1280, 'webp');
 		</script>
 		<div class="absolute inset-0 bg-rumo-navy/20"></div>
 		<h1
-			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
+			class="font-display relative px-6 text-center text-4xl font-bold tracking-wide text-white uppercase [text-shadow:0_2px_14px_rgba(0,0,0,0.5)] sm:text-6xl"
 		>
 			{hero.title}
+			<span class="mt-4 block font-sans text-base font-medium tracking-[0.25em] sm:text-2xl">
+				{hero.subtitle}
+			</span>
 		</h1>
 	</section>
 
-	<!-- Intro / Beach Club -->
-	<section id="beach-club" class="bg-rumo-yellow px-6 py-24 text-center">
+	<!-- Intro -->
+	<section class="bg-rumo-yellow px-6 py-24 text-center">
 		<div class="mx-auto max-w-2xl">
 			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{intro.heading}</h2>
-			<div class="mt-8 space-y-4 text-sm text-rumo-navy/80">
-				<p class="font-semibold">{intro.subheading}</p>
-				<p>{intro.body}</p>
-			</div>
-			<a
-				href={intro.buttonHref}
-				class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
-			>
-				{intro.buttonLabel}
-			</a>
+			<p class="mt-8 text-sm text-rumo-navy/80">{intro.body}</p>
 		</div>
 	</section>
 
-	<!-- Gallery strip -->
-	<section class="grid grid-cols-1 sm:grid-cols-3">
-		{
-			gallery.map((item: { image: string; alt: string }) => (
-				<Img
-					src={item.image}
-					alt={item.alt}
-					class="aspect-4/5 w-full object-cover"
-					widths={[480, 800, 1200]}
-					sizes="(min-width: 640px) 33vw, 100vw"
-				/>
-			))
-		}
+	<!-- Beach Club / Surf Club -->
+	<section class="bg-rumo-pink px-6 py-24">
+		<div class="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2">
+			{
+				cards.map(
+					(card: {
+						title: string;
+						body: string;
+						image: string;
+						imageAlt: string;
+						href: string;
+						buttonLabel: string;
+					}) => (
+						<div class="flex flex-col">
+							<a href={localePath(locale, card.href)} class="block overflow-hidden rounded-xl">
+								<Img
+									src={card.image}
+									alt={card.imageAlt}
+									class="aspect-4/3 w-full object-cover transition-transform duration-500 hover:scale-105"
+									widths={[480, 800, 1000]}
+									sizes="(min-width: 1024px) 480px, (min-width: 640px) 45vw, 90vw"
+								/>
+							</a>
+							<h2 class="font-display mt-6 text-2xl font-semibold">
+								<a href={localePath(locale, card.href)}>{card.title}</a>
+							</h2>
+							<p class="mt-2 text-sm text-rumo-navy/80">{card.body}</p>
+							<div>
+								<a href={localePath(locale, card.href)} class={button}>
+									{card.buttonLabel}
+								</a>
+							</div>
+						</div>
+					),
+				)
+			}
+		</div>
 	</section>
 
-	<!-- Entre o mar e a mesa -->
-	<section class="bg-rumo-pink px-6 py-24">
+	<!-- Há um tempo atrás -->
+	<section class="bg-rumo-purple px-6 py-24">
 		<div class="mx-auto grid max-w-5xl gap-12 sm:grid-cols-2 sm:items-center">
 			<div>
-				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{marEMesa.heading}</h2>
+				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{story.heading}</h2>
 				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
-					{marEMesa.paragraphs.map((p: string) => <p>{p}</p>)}
+					{story.paragraphs.map((p: string) => <p class="whitespace-pre-line">{p}</p>)}
 				</div>
-				<a
-					href={marEMesa.buttonHref}
-					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
-				>
-					{marEMesa.buttonLabel}
-				</a>
 			</div>
 			<Img
-				src={marEMesa.image}
-				alt={marEMesa.imageAlt}
-				class="aspect-4/5 w-full rounded-xl object-cover"
+				src={story.image}
+				alt={story.imageAlt}
+				class="aspect-4/3 w-full rounded-xl object-cover"
 				widths={[480, 800, 1000]}
-				sizes="(min-width: 1024px) 40vw, (min-width: 640px) 45vw, 90vw"
+				sizes="(min-width: 1024px) 480px, (min-width: 640px) 45vw, 90vw"
 			/>
 		</div>
 	</section>
 
-	<!-- Surf club -->
-	<section id="surf-club" class="bg-rumo-purple px-6 py-24 text-center">
+	<!-- À volta do Rumo -->
+	<section class="bg-rumo-yellow px-6 py-24 text-center">
 		<div class="mx-auto max-w-2xl">
-			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{surfClub.heading}</h2>
-			<p class="mt-6 text-sm text-rumo-navy/80">{surfClub.body}</p>
+			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{around.heading}</h2>
+			<p class="mt-6 text-sm text-rumo-navy/80">{around.body}</p>
 		</div>
-		<Img
-			src={surfClub.image}
-			alt={surfClub.imageAlt}
-			class="mx-auto mt-10 aspect-21/9 w-full max-w-5xl rounded-xl object-cover"
-			widths={[800, 1280, 1600]}
-			sizes="(min-width: 1024px) 1024px, 100vw"
-		/>
-		<div class="mx-auto mt-6 max-w-5xl overflow-hidden rounded-xl">
+		<div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-xl">
 			<iframe title={ui.mapTitle} class="h-96 w-full border-0" loading="lazy" src={mapSrc}></iframe>
 		</div>
 	</section>

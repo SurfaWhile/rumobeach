@@ -11,6 +11,10 @@ export const site = {
 		addressCountry: 'PT',
 	},
 	opens: '10:00',
+	geo: { latitude: 39.372323, longitude: -9.337431 },
+	hasMap: 'https://maps.app.goo.gl/gkqUCsELNgtb7GvB6',
+	priceRange: '€€',
+	servesCuisine: ['Portuguese', 'Seafood', 'International'],
 	sameAs: [
 		'https://www.facebook.com/profile.php?id=61588020290619',
 		'https://www.instagram.com/rumobeach/',
@@ -41,6 +45,11 @@ export function businessJsonLd(opts: {
 		telephone: site.telephone,
 		email: site.email,
 		address: { '@type': 'PostalAddress', ...site.address },
+		geo: { '@type': 'GeoCoordinates', ...site.geo },
+		hasMap: site.hasMap,
+		...(opts.type === 'Restaurant'
+			? { priceRange: site.priceRange, servesCuisine: site.servesCuisine }
+			: {}),
 		openingHoursSpecification: [
 			{
 				'@type': 'OpeningHoursSpecification',

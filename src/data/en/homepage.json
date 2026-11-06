@@ -4,41 +4,51 @@
     "description": "A beach club in Baleal that brings together surf, food, events and community. A place made for days by the sea, from the first coffee to the last cocktail."
   },
   "hero": {
-    "title": "Beach Club",
+    "title": "Rumo Beach Baleal",
     "video": "/images/rumobeach/video/wave-sweeping.mp4",
-    "poster": "/images/rumobeach/drone-beach-1.jpg"
+    "poster": "/images/rumobeach/drone-beach-1.jpg",
+    "subtitle": "Beach Club & Surf Club"
   },
   "intro": {
     "heading": "From tosta mista to oysters.",
-    "subheading": "Welcome to Rumo Beach Baleal.",
-    "body": "We don't promise today. We don't promise tomorrow. We don't promise the world, the answers or a life without worries. But we'll do our best to make you smile on the inside. For the morning sun on your face. For the feeling of arriving with nowhere to run to.",
-    "buttonLabel": "Menu",
-    "buttonHref": "#"
+    "body": "Whether you are starting the day or ending it slowly, alone or with the whole family, on your way to a surf lesson or just passing by for a chat with whoever is behind the bar — Rumo fits naturally into any kind of day."
   },
-  "gallery": [
-    { "image": "/images/rumobeach/food-1.jpg", "alt": "Breakfast bowl with fresh fruit" },
-    { "image": "/images/rumobeach/food-2.jpg", "alt": "French toast and a cocktail by the sea" },
-    { "image": "/images/rumobeach/food-5.jpg", "alt": "Platter of oysters and prawns" }
+  "cards": [
+    {
+      "title": "Beach Club",
+      "body": "A place where simple beach lunches and long dinners at the end of the day sit side by side.",
+      "image": "/images/rumobeach/food-5.jpg",
+      "imageAlt": "Platter of oysters and prawns",
+      "href": "/beach-club/",
+      "buttonLabel": "Learn more"
+    },
+    {
+      "title": "Surf Club",
+      "body": "Between the coast of Baleal and Peniche, our surf club is a space designed for surfers of all levels and all ages.",
+      "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
+      "imageAlt": "Surf lessons on Baleal beach",
+      "href": "/surf-club/",
+      "buttonLabel": "Learn more"
+    }
   ],
-  "marEMesa": {
-    "heading": "Between the sea and the table.",
+  "story": {
+    "heading": "Once upon a time.",
     "paragraphs": [
-      "We invite you to sit at a table or stay at the bar.",
-      "To overhear snatches of conversation and, without realising it, become part of them. To lose track of time while the children play on the sand. To stay for one more coffee, one more story, one more drink than you had planned.",
-      "We don't promise forever.",
-      "But maybe we can be the first ray of morning sun. Familiar, comforting and making you want to come back.",
-      "We don't promise the world. But we'd simply like to be part of your day."
+      "In the old days, fishermen didn't say where they were going,\nbut the course they were following.",
+      "“Rumo a…” they said.\nRumo… the course that appears when you set out without knowing everything beforehand.",
+      "Here, by the sea, those paths crossed.\nPeople passing through. People who ended up staying a little longer.\nUnlikely… but exactly right.",
+      "Rumo is not a destination.\nIt is a place between places.\nThe path you take until you get there.",
+      "A place where people meet,\nand where a certain charm appears without making a sound.",
+      "Things grow through meetings and coincidences.\nIt is on this course that conversations, moments and memories take shape.",
+      "And in the end, you don't need to go anywhere.\nYou are already on the right path.",
+      "This is Rumo."
     ],
-    "buttonLabel": "Book a table",
-    "buttonHref": "#",
-    "image": "/images/rumobeach/beach-photo.jpg",
-    "imageAlt": "Rumo Beach on Baleal beach"
+    "image": "/images/rumobeach/scenic-1536.png",
+    "imageAlt": "Aerial view of Baleal and the island"
   },
-  "surfClub": {
-    "heading": "Come and join us.",
-    "body": "Between the coast of Baleal and Peniche, our surf club is a space designed for surfers of all levels and all ages.",
-    "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
-    "imageAlt": "Surf lessons on Baleal beach",
+  "around": {
+    "heading": "Around Rumo.",
+    "body": "Rumo rests quietly among the dunes, slightly out of sight, with the ocean right next door. From here you can head in different directions — to the island, the beaches or the surf spots — or slowly return to where you started, depending on the course the day takes.",
     "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
   },
   "newsletter": {

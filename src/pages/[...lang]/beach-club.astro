@@ -13,8 +13,7 @@ export function getStaticPaths() {
 
 const locale = localeFromParams(Astro.params.lang);
 const path = '/beach-club/';
-const { meta, hero } = await getContent(locale, 'beachClub');
-const { intro, gallery, marEMesa } = await getContent(locale, 'homepage');
+const { meta, hero, intro, gallery, marEMesa } = await getContent(locale, 'beachClub');
 
 const ui = await getContent(locale, 'ui');
 const business = businessJsonLd({
