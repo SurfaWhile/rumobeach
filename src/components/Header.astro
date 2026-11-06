@@ -1,55 +1,97 @@
 ---
+import { locales, localeCodes, localePath, type Locale } from '../i18n/config';
+import { getContent } from '../i18n/content';
+
 interface Props {
+	locale: Locale;
+	path?: string;
 	transparent?: boolean;
 }
 
-const { transparent = true } = Astro.props;
+const { locale, path = '/', transparent = true } = Astro.props;
+const ui = await getContent(locale, 'ui');
 
-const links = {
-	left: [
-		{ href: '/surf-club/', label: 'Surf Club' },
-		{ href: '/beach-club/', label: 'Beach Club' },
-	],
-	right: [
-		{ href: '/#contactos', label: 'Contactos' },
-		{ href: '/#equipa', label: 'Equipa' },
-		{ href: '#', label: 'EN' },
-	],
-};
+const home = localePath(locale, '/');
+const left = [
+	{ href: localePath(locale, '/surf-club/'), label: ui.nav.surfClub },
+	{ href: localePath(locale, '/beach-club/'), label: ui.nav.beachClub },
+];
+const right = [
+	{ href: `${home}#contactos`, label: ui.nav.contacts },
+	{ href: `${home}#equipa`, label: ui.nav.team },
+];
 
 const headerClass = transparent
 	? 'absolute inset-x-0 top-0 z-10 text-white'
 	: 'relative z-10 border-b border-rumo-navy/10 bg-rumo-cream text-rumo-navy';
-
-const linkClass = transparent ? 'hover:text-rumo-gold' : 'hover:text-rumo-gold';
 ---
 
 <header class={headerClass}>
 	<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-		<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
-			{
-				links.left.map((l) => (
-					<a href={l.href} class={linkClass}>
-						{l.label}
-					</a>
-				))
-			}
-		</nav>
-		<a href="/">
+		<div class="flex flex-1 items-center">
+			<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
+				{left.map((l) => <a href={l.href} class="hover:text-rumo-gold">{l.label}</a>)}
+			</nav>
+
+			<details class="relative sm:hidden">
+				<summary
+					class="flex cursor-pointer list-none items-center [&::-webkit-details-marker]:hidden"
+					aria-label={ui.menuButton}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						class="h-6 w-6"
+						aria-hidden="true"
+					>
+						<path d="M4 7h16M4 12h16M4 17h16"></path>
+					</svg>
+				</summary>
+				<nav
+					class="absolute top-full left-0 mt-3 flex w-56 flex-col gap-4 rounded-xl bg-rumo-cream p-5 text-xs font-medium tracking-wide text-rumo-navy uppercase shadow-lg"
+				>
+					{[...left, ...right].map((l) => <a href={l.href}>{l.label}</a>)}
+				</nav>
+			</details>
+		</div>
+
+		<a href={home}>
 			<img
 				src="/images/rumobeach/logo-amarelo.png"
-				alt="Rumo Beach"
+				alt={ui.logoAlt}
 				class:list={['h-10 w-auto', { 'brightness-0': !transparent }]}
 			/>
 		</a>
-		<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
-			{
-				links.right.map((l) => (
-					<a href={l.href} class={linkClass}>
-						{l.label}
-					</a>
-				))
-			}
-		</nav>
+
+		<div class="flex flex-1 items-center justify-end gap-6">
+			<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
+				{right.map((l) => <a href={l.href} class="hover:text-rumo-gold">{l.label}</a>)}
+			</nav>
+			<ul class="flex gap-3 text-xs font-medium tracking-wide" aria-label={ui.languageLabel}>
+				{
+					localeCodes.map((code) => (
+						<li>
+							<a
+								href={localePath(code, path)}
+								hreflang={locales[code].htmlLang}
+								lang={locales[code].htmlLang.split('-')[0]}
+								title={locales[code].name}
+								aria-current={code === locale ? 'true' : undefined}
+								class:list={[
+									'hover:opacity-100',
+									code === locale ? 'font-bold underline underline-offset-4' : 'opacity-70',
+								]}
+							>
+								{locales[code].label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	</div>
 </header>

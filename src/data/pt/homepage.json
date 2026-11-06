@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Rumo Beach Baleal | Beach Club e Surf Club no Baleal",
+    "description": "Um beach club no Baleal que junta surf, comida, eventos e comunidade. Um espaço pensado para dias junto ao mar, do primeiro café ao último cocktail."
+  },
   "hero": {
     "title": "Beach Club",
     "video": "/images/rumobeach/video/wave-sweeping.mp4",
@@ -12,9 +16,9 @@
     "buttonHref": "#"
   },
   "gallery": [
-    { "image": "/images/rumobeach/food-1.jpg", "alt": "Ontbijtbowl met vers fruit" },
-    { "image": "/images/rumobeach/food-2.jpg", "alt": "French toast en cocktail met zeezicht" },
-    { "image": "/images/rumobeach/food-5.jpg", "alt": "Schaal met oesters en gamba's" }
+    { "image": "/images/rumobeach/food-1.jpg", "alt": "Bowl de pequeno-almoço com fruta fresca" },
+    { "image": "/images/rumobeach/food-2.jpg", "alt": "French toast e cocktail com vista para o mar" },
+    { "image": "/images/rumobeach/food-5.jpg", "alt": "Travessa de ostras e gambas" }
   ],
   "marEMesa": {
     "heading": "Entre o mar e a mesa.",
@@ -27,12 +31,14 @@
     ],
     "buttonLabel": "Reservar",
     "buttonHref": "#",
-    "image": "/images/rumobeach/beach-photo.jpg"
+    "image": "/images/rumobeach/beach-photo.jpg",
+    "imageAlt": "Rumo Beach na praia do Baleal"
   },
   "surfClub": {
     "heading": "Vem ter connosco.",
     "body": "Entre a costa do Baleal e Peniche, o nosso surf club é um espaço pensado para surfistas de todos os níveis e todas as idades.",
     "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
+    "imageAlt": "Aulas de surf na praia do Baleal",
     "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
   },
   "newsletter": {

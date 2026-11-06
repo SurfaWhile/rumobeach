@@ -1,45 +1,84 @@
 ---
 import '../styles/global.css';
+import { locales, localeCodes, localePath, defaultLocale, type Locale } from '../i18n/config';
+import { site } from '../i18n/site';
 
 interface Props {
-	title?: string;
-	description?: string;
+	locale: Locale;
+	path: string;
+	title: string;
+	description: string;
+	image?: string;
+	jsonLd?: object;
+	noindex?: boolean;
 }
 
 const {
-	title = 'Rumo Beach — Strandtent & Surfschool',
-	description = 'Rumo Beach: strandtent, surfschool en zonsondergangen op het strand.',
+	locale,
+	path,
+	title,
+	description,
+	image = site.defaultOgImage,
+	jsonLd,
+	noindex = false,
 } = Astro.props;
+
+const abs = (p: string) => new URL(p, site.url).href;
+const canonical = abs(localePath(locale, path));
+const alternates = localeCodes.map((code) => ({
+	code,
+	hreflang: locales[code].htmlLang,
+	href: abs(localePath(code, path)),
+}));
+const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : undefined;
 ---
 
 <!doctype html>
-<html lang="nl">
+<html lang={locales[locale].htmlLang}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		{alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+		<link rel="alternate" hreflang="x-default" href={abs(localePath(defaultLocale, path))} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={abs(image)} />
+		<meta property="og:locale" content={locales[locale].ogLocale} />
+		{
+			localeCodes
+				.filter((code) => code !== locale)
+				.map((code) => <meta property="og:locale:alternate" content={locales[code].ogLocale} />)
+		}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={abs(image)} />
+
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
+		<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
-		<script is:inline defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-		></script>
+
+		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</head>
 	<body class="min-h-screen bg-rumo-cream font-sans text-rumo-navy antialiased">
 		<slot />
-		<script is:inline>
-			if (window.netlifyIdentity) {
-				window.netlifyIdentity.on('init', (user) => {
-					if (!user && window.location.hash.includes('token')) {
-						window.location.href = '/admin/' + window.location.hash;
-					}
-				});
-			}
-		</script>
 	</body>
 </html>

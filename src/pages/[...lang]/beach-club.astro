@@ -1,28 +1,46 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import content from '../data/homepage.json';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+import { absUrl, businessJsonLd } from '../../i18n/site';
 
-const { intro, gallery, marEMesa } = content;
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/beach-club/';
+const { meta, hero } = await getContent(locale, 'beachClub');
+const { intro, gallery, marEMesa } = await getContent(locale, 'homepage');
+
+const jsonLd = businessJsonLd({
+	type: 'Restaurant',
+	url: absUrl(localePath(locale, path)),
+	description: meta.description,
+	image: absUrl(hero.image),
+});
 ---
 
 <Layout
-	title="Beach Club — Rumo Beach Baleal"
-	description="Restaurante, café en bar aan het strand van Baleal — van tosta mista tot oesters."
+	locale={locale}
+	path={path}
+	title={meta.title}
+	description={meta.description}
+	image={hero.image}
+	jsonLd={jsonLd}
 >
-	<Header transparent={false} />
+	<Header locale={locale} path={path} transparent={false} />
 
 	<!-- Page hero -->
 	<section class="relative flex h-[45vh] min-h-[320px] items-center justify-center overflow-hidden">
-		<img
-			src="/images/rumobeach/food-5.jpg"
-			alt=""
-			class="absolute inset-0 h-full w-full object-cover"
-		/>
+		<img src={hero.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
 		<div class="absolute inset-0 bg-rumo-navy/30"></div>
-		<h1 class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl">
-			Beach Club
+		<h1
+			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
+		>
+			{hero.title}
 		</h1>
 	</section>
 
@@ -46,7 +64,7 @@ const { intro, gallery, marEMesa } = content;
 	<!-- Gallery strip -->
 	<section class="grid grid-cols-1 sm:grid-cols-3">
 		{
-			gallery.map((item) => (
+			gallery.map((item: { image: string; alt: string }) => (
 				<img src={item.image} alt={item.alt} class="aspect-4/5 w-full object-cover" />
 			))
 		}
@@ -58,7 +76,7 @@ const { intro, gallery, marEMesa } = content;
 			<div>
 				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{marEMesa.heading}</h2>
 				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
-					{marEMesa.paragraphs.map((p) => <p>{p}</p>)}
+					{marEMesa.paragraphs.map((p: string) => <p>{p}</p>)}
 				</div>
 				<a
 					href={marEMesa.buttonHref}
@@ -69,11 +87,11 @@ const { intro, gallery, marEMesa } = content;
 			</div>
 			<img
 				src={marEMesa.image}
-				alt="Rumo Beach aan het strand van Baleal"
+				alt={marEMesa.imageAlt}
 				class="aspect-4/5 w-full rounded-xl object-cover"
 			/>
 		</div>
 	</section>
 
-	<Footer />
+	<Footer locale={locale} />
 </Layout>

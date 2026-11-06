@@ -24,15 +24,27 @@ netlify deploy          # draft deploy
 netlify deploy --prod   # productie
 ```
 
+## Talen en SEO
+
+Portugees staat op de hoofdnaam (`/`), andere talen onder `/<code>/` (nu `/en/`). Alle pagina's staan in `src/pages/[...lang]/` en worden voor elke taal gegenereerd.
+
+Een taal toevoegen (bv. `nl`, `de`):
+
+1. Regel toevoegen in `src/i18n/config.ts`.
+2. Map `src/data/<code>/` maken met `homepage.json`, `beachClub.json`, `surfClub.json` en `ui.json` (kopieer `pt/` of `en/`). Ontbreekt een bestand, dan valt de site terug op Portugees.
+
+Per pagina staan `meta.title` en `meta.description` in het JSON-bestand van die taal. Canonical, hreflang, Open Graph, JSON-LD en de sitemap worden automatisch gegenereerd. Alle content wordt opgehaald via `getContent()` in `src/i18n/content.ts`; dat is de enige plek die vervangen hoeft te worden als de content later uit WordPress komt.
+
 ## Project structuur
 
 ```text
 /
-├── public/
+├── public/                  robots.txt, favicons, og-default.jpg, images/
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/          Header (taalschakelaar, mobiel menu), Footer
+│   ├── data/<taal>/         content per taal (JSON)
+│   ├── i18n/                config, content-loader, site-gegevens (SEO)
+│   ├── layouts/Layout.astro head: SEO-tags, hreflang, JSON-LD
+│   └── pages/[...lang]/     index, beach-club, surf-club
 └── netlify.toml
 ```

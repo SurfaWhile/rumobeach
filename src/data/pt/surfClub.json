@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Rumo Beach Baleal | Escola de Surf, Coaching e Alugueres",
+    "description": "Escola de surf no Baleal para todos os níveis e idades: aulas, coaching, academia, programas para crianças e jovens e aluguer de material."
+  },
   "hero": {
     "title": "Surf para todos.",
     "body": "Os nossos instrutores acompanham cada sessão com paciência, experiência e um profundo conhecimento do mar aqui no Baleal.",
@@ -33,5 +37,6 @@
   "ctaLabel": "Marcar Aulas",
   "ctaHref": "#",
   "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
+  "imageAlt": "Aulas de surf na praia do Baleal",
   "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
 }

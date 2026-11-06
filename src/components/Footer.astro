@@ -1,12 +1,19 @@
 ---
-import content from '../data/homepage.json';
+import type { Locale } from '../i18n/config';
+import { getContent } from '../i18n/content';
 
-const { footer } = content;
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const { footer } = await getContent(locale, 'homepage');
+const ui = await getContent(locale, 'ui');
 ---
 
 <footer class="border-t border-rumo-navy/10 px-6 py-10">
 	<div class="mx-auto flex max-w-6xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
-		<img src="/images/rumobeach/logo-amarelo.png" alt="Rumo Beach" class="h-10 w-auto brightness-0" />
+		<img src="/images/rumobeach/logo-amarelo.png" alt={ui.logoAlt} class="h-10 w-auto brightness-0" />
 
 		<div class="text-center text-sm text-rumo-navy/70 sm:text-left">
 			<p>{footer.addressLine1}</p>

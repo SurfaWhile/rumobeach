@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "surfClub": "Surf Club",
+    "beachClub": "Beach Club",
+    "contacts": "Contactos",
+    "team": "Equipa"
+  },
+  "menuButton": "Menu",
+  "languageLabel": "Idioma",
+  "emailPlaceholder": "O teu email",
+  "mapTitle": "Localização do Rumo Beach no mapa",
+  "logoAlt": "Rumo Beach"
+}

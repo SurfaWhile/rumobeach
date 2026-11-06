@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Rumo Beach Baleal | Surf School, Coaching and Rentals",
+    "description": "Surf school in Baleal for all levels and ages: lessons, coaching, academy, programmes for children and teens, and equipment rental."
+  },
+  "hero": {
+    "title": "Surf for everyone.",
+    "body": "Our instructors guide every session with patience, experience and a deep knowledge of the sea here in Baleal.",
+    "image": "/images/rumobeach/surfer-wave.jpg"
+  },
+  "offerings": [
+    {
+      "title": "Surf Lessons",
+      "body": "For all levels. Every lesson is tailored to the individual and the conditions of the day."
+    },
+    {
+      "title": "Surf Coaching",
+      "body": "Focused on developing movement and technique. From high performance to longboard, twin fin and alternative styles."
+    },
+    {
+      "title": "Academy",
+      "body": "Personalised training programmes."
+    },
+    {
+      "title": "Family Experience",
+      "body": "Time shared in and out of the water, for the whole family."
+    },
+    {
+      "title": "Programmes for Children and Teens",
+      "body": "Surf lessons, beach activities and holiday camps for children and teens. Get in touch to find out the start dates!"
+    },
+    {
+      "title": "Equipment Rental",
+      "body": "Premium surf equipment, ready to hit the water."
+    }
+  ],
+  "ctaLabel": "Book lessons",
+  "ctaHref": "#",
+  "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
+  "imageAlt": "Surf lessons on Baleal beach",
+  "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
+}

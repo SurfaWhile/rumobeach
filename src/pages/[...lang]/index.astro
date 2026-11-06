@@ -1,15 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import content from '../data/homepage.json';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+import { absUrl, businessJsonLd } from '../../i18n/site';
 
-const { hero, intro, gallery, marEMesa, surfClub, newsletter } = content;
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/';
+const { meta, hero, intro, gallery, marEMesa, surfClub, newsletter } = await getContent(
+	locale,
+	'homepage',
+);
+const ui = await getContent(locale, 'ui');
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapAddress)}&output=embed`;
+
+const jsonLd = businessJsonLd({
+	type: 'Restaurant',
+	url: absUrl(localePath(locale, path)),
+	description: meta.description,
+	image: absUrl(hero.poster),
+});
 ---
 
-<Layout title="Rumo Beach — Beach Club & Surf Club, Baleal">
-	<Header />
+<Layout
+	locale={locale}
+	path={path}
+	title={meta.title}
+	description={meta.description}
+	image={hero.poster}
+	jsonLd={jsonLd}
+>
+	<Header locale={locale} path={path} />
 
 	<!-- Hero -->
 	<section class="relative flex h-[85vh] min-h-[560px] items-center justify-center overflow-hidden">
@@ -50,7 +76,7 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 	<!-- Gallery strip -->
 	<section class="grid grid-cols-1 sm:grid-cols-3">
 		{
-			gallery.map((item) => (
+			gallery.map((item: { image: string; alt: string }) => (
 				<img src={item.image} alt={item.alt} class="aspect-4/5 w-full object-cover" />
 			))
 		}
@@ -62,7 +88,7 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 			<div>
 				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{marEMesa.heading}</h2>
 				<div class="mt-6 space-y-4 text-sm text-rumo-navy/80">
-					{marEMesa.paragraphs.map((p) => <p>{p}</p>)}
+					{marEMesa.paragraphs.map((p: string) => <p>{p}</p>)}
 				</div>
 				<a
 					href={marEMesa.buttonHref}
@@ -73,7 +99,7 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 			</div>
 			<img
 				src={marEMesa.image}
-				alt="Rumo Beach aan het strand van Baleal"
+				alt={marEMesa.imageAlt}
 				class="aspect-4/5 w-full rounded-xl object-cover"
 			/>
 		</div>
@@ -87,16 +113,11 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 		</div>
 		<img
 			src={surfClub.image}
-			alt="Surflessen op het strand van Baleal"
+			alt={surfClub.imageAlt}
 			class="mx-auto mt-10 aspect-21/9 w-full max-w-5xl rounded-xl object-cover"
 		/>
 		<div class="mx-auto mt-6 max-w-5xl overflow-hidden rounded-xl">
-			<iframe
-				title="Rumo Beach op de kaart"
-				class="h-96 w-full border-0"
-				loading="lazy"
-				src={mapSrc}
-			></iframe>
+			<iframe title={ui.mapTitle} class="h-96 w-full border-0" loading="lazy" src={mapSrc}></iframe>
 		</div>
 	</section>
 
@@ -109,7 +130,8 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 				<input
 					type="email"
 					required
-					placeholder="O teu email"
+					placeholder={ui.emailPlaceholder}
+					aria-label={ui.emailPlaceholder}
 					class="w-full rounded-full border border-rumo-navy/30 bg-white px-5 py-3 text-sm"
 				/>
 				<button
@@ -123,5 +145,5 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(surfClub.mapA
 	</section>
 
 	<div id="equipa"></div>
-	<Footer />
+	<Footer locale={locale} />
 </Layout>
