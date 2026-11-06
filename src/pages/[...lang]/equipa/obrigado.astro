@@ -1,0 +1,40 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../../i18n/config';
+import { getContent } from '../../../i18n/content';
+
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/equipa/obrigado/';
+const { thanks } = await getContent(locale, 'team');
+---
+
+<Layout
+	locale={locale}
+	path={path}
+	title={thanks.meta.title}
+	description={thanks.meta.description}
+	noindex
+>
+	<Header locale={locale} path={path} transparent={false} />
+
+	<section class="bg-rumo-pink px-6 py-32 text-center">
+		<div class="mx-auto max-w-xl">
+			<h1 class="font-display text-4xl font-semibold sm:text-5xl">{thanks.heading}</h1>
+			<p class="mt-6 text-rumo-navy/80">{thanks.body}</p>
+			<a
+				href={localePath(locale, '/')}
+				class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+			>
+				{thanks.backLabel}
+			</a>
+		</div>
+	</section>
+
+	<Footer locale={locale} />
+</Layout>

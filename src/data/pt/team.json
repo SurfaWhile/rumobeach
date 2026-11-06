@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Junta-te à equipa | Rumo Beach Baleal",
+    "description": "Trabalha no Rumo Beach Baleal: bartenders, empregados de mesa, cozinha e instrutores de surf. Candidata-te ao nosso projeto novo junto ao mar."
+  },
+  "hero": {
+    "title": "Junta-te à equipa!",
+    "image": "/images/rumobeach/surfboards-beach-group.jpg"
+  },
+  "intro": "Se gostas do ambiente de praia, de trabalhar em equipa e de criar boas experiências para quem nos visita, queremos conhecer-te.",
+  "benefitsHeading": "O que vais encontrar na nossa equipa:",
+  "benefits": [
+    "Ambiente descontraído junto ao mar",
+    "Uma equipa jovem e dinâmica",
+    "Um projeto novo onde podes crescer desde o início"
+  ],
+  "form": {
+    "name": "Nome",
+    "residence": "Zona de residência",
+    "email": "Email",
+    "birthdate": "Data de nascimento",
+    "phone": "Telemóvel",
+    "discoverLabel": "Como nos descobriste?",
+    "discoverOptions": [
+      { "value": "Redes Sociais", "label": "Redes sociais" },
+      { "value": "Google", "label": "Google" },
+      { "value": "Amigos/Familia", "label": "Amigos/Família" },
+      { "value": "Offline", "label": "Offline" }
+    ],
+    "rolesLabel": "Qual cargo é mais adequado para ti?",
+    "roles": [
+      { "value": "Bartender", "label": "Bartender" },
+      { "value": "Assistente de Sala", "label": "Assistente de sala" },
+      { "value": "Empregado de Mesa", "label": "Empregado de mesa" },
+      { "value": "Empregado de Mesa na praia", "label": "Empregado de mesa na praia" },
+      { "value": "Ajudante de cozinha", "label": "Ajudante de cozinha" },
+      { "value": "Cozinheiro", "label": "Cozinheiro" },
+      { "value": "Barista", "label": "Barista" },
+      { "value": "Instrutor de Surf", "label": "Instrutor de surf" },
+      { "value": "Assistente de Instrutor de Surf", "label": "Assistente de instrutor de surf" }
+    ],
+    "cvLabel": "Anexar CV",
+    "cvHint": "PDF ou Word, máximo 8 MB.",
+    "consent": "Autorizo o Rumo Beach a tratar os meus dados pessoais e o meu CV para fins de recrutamento.",
+    "submit": "Enviar"
+  },
+  "thanks": {
+    "meta": {
+      "title": "Obrigado | Rumo Beach Baleal",
+      "description": "Recebemos a tua candidatura."
+    },
+    "heading": "Obrigado!",
+    "body": "Recebemos a tua candidatura e entraremos em contacto em breve.",
+    "backLabel": "Voltar ao início"
+  }
+}

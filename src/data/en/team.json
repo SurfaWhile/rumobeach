@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Join the team | Rumo Beach Baleal",
+    "description": "Work at Rumo Beach Baleal: bartenders, waiting staff, kitchen and surf instructors. Apply to join our new project by the sea."
+  },
+  "hero": {
+    "title": "Join the team!",
+    "image": "/images/rumobeach/surfboards-beach-group.jpg"
+  },
+  "intro": "If you love the beach atmosphere, working as a team and creating great experiences for the people who visit us, we want to meet you.",
+  "benefitsHeading": "What you'll find in our team:",
+  "benefits": [
+    "A relaxed atmosphere by the sea",
+    "A young, dynamic team",
+    "A new project where you can grow from the start"
+  ],
+  "form": {
+    "name": "Name",
+    "residence": "Area of residence",
+    "email": "Email",
+    "birthdate": "Date of birth",
+    "phone": "Mobile phone",
+    "discoverLabel": "How did you find us?",
+    "discoverOptions": [
+      { "value": "Redes Sociais", "label": "Social media" },
+      { "value": "Google", "label": "Google" },
+      { "value": "Amigos/Familia", "label": "Friends/Family" },
+      { "value": "Offline", "label": "Offline" }
+    ],
+    "rolesLabel": "Which role suits you best?",
+    "roles": [
+      { "value": "Bartender", "label": "Bartender" },
+      { "value": "Assistente de Sala", "label": "Floor assistant" },
+      { "value": "Empregado de Mesa", "label": "Waiter / waitress" },
+      { "value": "Empregado de Mesa na praia", "label": "Beach waiter / waitress" },
+      { "value": "Ajudante de cozinha", "label": "Kitchen assistant" },
+      { "value": "Cozinheiro", "label": "Cook" },
+      { "value": "Barista", "label": "Barista" },
+      { "value": "Instrutor de Surf", "label": "Surf instructor" },
+      { "value": "Assistente de Instrutor de Surf", "label": "Assistant surf instructor" }
+    ],
+    "cvLabel": "Attach CV",
+    "cvHint": "PDF or Word, 8 MB maximum.",
+    "consent": "I allow Rumo Beach to process my personal data and CV for recruitment purposes.",
+    "submit": "Send"
+  },
+  "thanks": {
+    "meta": {
+      "title": "Thank you | Rumo Beach Baleal",
+      "description": "We have received your application."
+    },
+    "heading": "Thank you!",
+    "body": "We have received your application and will be in touch soon.",
+    "backLabel": "Back to home"
+  }
+}

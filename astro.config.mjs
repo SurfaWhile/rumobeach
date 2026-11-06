@@ -10,7 +10,10 @@ import { site } from './src/i18n/site.ts';
 export default defineConfig({
   site: site.url,
   trailingSlash: 'always',
-  integrations: [sitemap({ i18n: { defaultLocale, locales: sitemapLocales } })],
+  integrations: [sitemap({
+      i18n: { defaultLocale, locales: sitemapLocales },
+      filter: (page) => !page.includes('/obrigado/'),
+    })],
   vite: {
     plugins: [tailwindcss()],
   },

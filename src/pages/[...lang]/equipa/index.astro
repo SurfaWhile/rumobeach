@@ -1,0 +1,132 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../../i18n/config';
+import { getContent } from '../../../i18n/content';
+
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/equipa/';
+const { meta, hero, intro, benefitsHeading, benefits, form: f } = await getContent(locale, 'team');
+const thanksPath = localePath(locale, '/equipa/obrigado/');
+
+const input =
+	'mt-1 w-full rounded-lg border border-rumo-navy/30 bg-white px-4 py-3 text-sm focus:border-rumo-navy focus:outline-none';
+const label = 'block text-sm font-medium';
+const check = 'flex items-center gap-2 text-sm';
+const checkbox = 'h-4 w-4 accent-rumo-navy';
+---
+
+<Layout locale={locale} path={path} title={meta.title} description={meta.description} image={hero.image}>
+	<Header locale={locale} path={path} transparent={false} />
+
+	<section class="relative flex h-[40vh] min-h-[280px] items-center justify-center overflow-hidden">
+		<img src={hero.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<div class="absolute inset-0 bg-rumo-navy/40"></div>
+		<h1
+			class="font-display relative px-6 text-center text-4xl font-bold tracking-wide text-white uppercase sm:text-5xl"
+		>
+			{hero.title}
+		</h1>
+	</section>
+
+	<section class="bg-rumo-pink px-6 py-20">
+		<div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[2fr_3fr]">
+			<div>
+				<p class="text-rumo-navy/80">{intro}</p>
+				<h2 class="font-display mt-8 text-xl font-semibold">{benefitsHeading}</h2>
+				<ul class="mt-4 space-y-2 text-sm text-rumo-navy/80">
+					{benefits.map((b: string) => <li class="flex gap-3"><span aria-hidden="true">&bull;</span>{b}</li>)}
+				</ul>
+			</div>
+
+			<form
+				name="team-application"
+				method="POST"
+				action={thanksPath}
+				enctype="multipart/form-data"
+				data-netlify="true"
+				data-netlify-honeypot="bot-field"
+				class="rounded-xl bg-rumo-cream p-6 sm:p-8"
+			>
+				<input type="hidden" name="form-name" value="team-application" />
+				<input type="hidden" name="language" value={locale} />
+				<p class="hidden"><label>Não preencher: <input name="bot-field" /></label></p>
+
+				<div class="grid gap-5 sm:grid-cols-2">
+					<label class={label}>{f.name}
+						<input type="text" name="name" required autocomplete="name" class={input} />
+					</label>
+					<label class={label}>{f.residence}
+						<input type="text" name="residence" required class={input} />
+					</label>
+					<label class={`${label} sm:col-span-2`}>{f.email}
+						<input type="email" name="email" required autocomplete="email" class={input} />
+					</label>
+					<label class={label}>{f.birthdate}
+						<input type="date" name="birthdate" required class={input} />
+					</label>
+					<label class={label}>{f.phone}
+						<input type="tel" name="phone" required autocomplete="tel" class={input} />
+					</label>
+				</div>
+
+				<fieldset class="mt-6">
+					<legend class={label}>{f.discoverLabel}</legend>
+					<div class="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+						{
+							f.discoverOptions.map((o: { value: string; label: string }) => (
+								<label class={check}>
+									<input type="checkbox" name="discover" value={o.value} class={checkbox} />
+									{o.label}
+								</label>
+							))
+						}
+					</div>
+				</fieldset>
+
+				<fieldset class="mt-6">
+					<legend class={label}>{f.rolesLabel}</legend>
+					<div class="mt-2 grid gap-2 sm:grid-cols-2">
+						{
+							f.roles.map((o: { value: string; label: string }) => (
+								<label class={check}>
+									<input type="checkbox" name="roles" value={o.value} class={checkbox} />
+									{o.label}
+								</label>
+							))
+						}
+					</div>
+				</fieldset>
+
+				<label class={`${label} mt-6`}>{f.cvLabel}
+					<input
+						type="file"
+						name="cv"
+						accept=".pdf,.doc,.docx"
+						class="mt-1 block w-full text-sm file:mr-4 file:cursor-pointer file:rounded-full file:border file:border-rumo-navy file:bg-transparent file:px-4 file:py-2 file:text-sm hover:file:bg-rumo-navy hover:file:text-white"
+					/>
+					<span class="mt-1 block text-xs font-normal text-rumo-navy/60">{f.cvHint}</span>
+				</label>
+
+				<label class="mt-6 flex items-start gap-2 text-xs text-rumo-navy/80">
+					<input type="checkbox" name="consent" value="sim" required class={`${checkbox} mt-0.5`} />
+					{f.consent}
+				</label>
+
+				<button
+					type="submit"
+					class="mt-8 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+				>
+					{f.submit}
+				</button>
+			</form>
+		</div>
+	</section>
+
+	<Footer locale={locale} />
+</Layout>
