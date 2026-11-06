@@ -9,7 +9,7 @@ interface Props {
 	title: string;
 	description: string;
 	image?: string;
-	jsonLd?: object;
+	jsonLd?: object | object[];
 	noindex?: boolean;
 }
 
@@ -30,7 +30,9 @@ const alternates = localeCodes.map((code) => ({
 	hreflang: locales[code].htmlLang,
 	href: abs(localePath(code, path)),
 }));
-const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : undefined;
+const jsonLdBlocks = ([] as object[])
+	.concat(jsonLd ?? [])
+	.map((block) => JSON.stringify(block).replace(/</g, '\\u003c'));
 ---
 
 <!doctype html>
@@ -39,6 +41,7 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#f2e6ce" />
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
@@ -76,7 +79,8 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 			rel="stylesheet"
 		/>
 
-		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
+		{jsonLdBlocks.map((block) => <script type="application/ld+json" set:html={block} />)}
+		<slot name="head" />
 	</head>
 	<body class="min-h-screen bg-rumo-cream font-sans text-rumo-navy antialiased">
 		<slot />

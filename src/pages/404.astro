@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { localeCodes, localePath } from '../i18n/config';
+import { getContent } from '../i18n/content';
+
+const texts = await Promise.all(
+	localeCodes.map(async (code) => ({ code, ui: await getContent(code, 'ui') })),
+);
+const [main, ...others] = texts;
+---
+
+<Layout
+	locale={main.code}
+	path="/404/"
+	title={`${main.ui.notFound.title} | Rumo Beach Baleal`}
+	description={main.ui.notFound.body}
+	noindex
+>
+	<Header locale={main.code} path="/" transparent={false} />
+
+	<section class="bg-rumo-yellow px-6 py-32 text-center">
+		<div class="mx-auto max-w-xl space-y-12">
+			{
+				[main, ...others].map((t, i) => (
+					<div lang={t.code}>
+						{i === 0 ? (
+							<h1 class="font-display text-4xl font-semibold sm:text-5xl">{t.ui.notFound.title}</h1>
+						) : (
+							<h2 class="font-display text-3xl font-semibold">{t.ui.notFound.title}</h2>
+						)}
+						<p class="mt-4 text-rumo-navy/80">{t.ui.notFound.body}</p>
+						<a
+							href={localePath(t.code, '/')}
+							class="mt-6 inline-block rounded-full border border-rumo-navy px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+						>
+							{t.ui.notFound.back}
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<Footer locale={main.code} />
+</Layout>

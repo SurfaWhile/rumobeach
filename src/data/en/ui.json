@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "surfClub": "Surf Club",
     "beachClub": "Beach Club",
     "contacts": "Contact",
@@ -9,5 +10,10 @@
   "languageLabel": "Language",
   "emailPlaceholder": "Your email",
   "mapTitle": "Rumo Beach location on the map",
-  "logoAlt": "Rumo Beach"
+  "logoAlt": "Rumo Beach",
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
 }

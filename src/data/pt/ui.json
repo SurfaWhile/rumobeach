@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Início",
     "surfClub": "Surf Club",
     "beachClub": "Beach Club",
     "contacts": "Contactos",
@@ -9,5 +10,10 @@
   "languageLabel": "Idioma",
   "emailPlaceholder": "O teu email",
   "mapTitle": "Localização do Rumo Beach no mapa",
-  "logoAlt": "Rumo Beach"
+  "logoAlt": "Rumo Beach",
+  "notFound": {
+    "title": "Página não encontrada",
+    "body": "A página que procuras não existe ou mudou de sítio.",
+    "back": "Voltar ao início"
+  }
 }

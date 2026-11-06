@@ -2,8 +2,10 @@
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import Img from '../../../components/Img.astro';
 import { getStaticLocalePaths, localeFromParams, localePath } from '../../../i18n/config';
 import { getContent } from '../../../i18n/content';
+import { breadcrumbJsonLd } from '../../../i18n/site';
 
 export function getStaticPaths() {
 	return getStaticLocalePaths();
@@ -13,6 +15,11 @@ const locale = localeFromParams(Astro.params.lang);
 const path = '/equipa/';
 const { meta, hero, intro, benefitsHeading, benefits, form: f } = await getContent(locale, 'team');
 const thanksPath = localePath(locale, '/equipa/obrigado/');
+const ui = await getContent(locale, 'ui');
+const jsonLd = breadcrumbJsonLd([
+	{ name: ui.nav.home, path: localePath(locale, '/') },
+	{ name: ui.nav.team, path: localePath(locale, path) },
+]);
 
 const input =
 	'mt-1 w-full rounded-lg border border-rumo-navy/30 bg-white px-4 py-3 text-sm focus:border-rumo-navy focus:outline-none';
@@ -21,11 +28,25 @@ const check = 'flex items-center gap-2 text-sm';
 const checkbox = 'h-4 w-4 accent-rumo-navy';
 ---
 
-<Layout locale={locale} path={path} title={meta.title} description={meta.description} image={hero.image}>
+<Layout
+	locale={locale}
+	path={path}
+	title={meta.title}
+	description={meta.description}
+	image={hero.image}
+	jsonLd={jsonLd}
+>
 	<Header locale={locale} path={path} transparent={false} />
 
 	<section class="relative flex h-[40vh] min-h-[280px] items-center justify-center overflow-hidden">
-		<img src={hero.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<Img
+			src={hero.image}
+			alt=""
+			class="absolute inset-0 h-full w-full object-cover"
+			widths={[800, 1280, 1920]}
+			loading="eager"
+			fetchpriority="high"
+		/>
 		<div class="absolute inset-0 bg-rumo-navy/40"></div>
 		<h1
 			class="font-display relative px-6 text-center text-4xl font-bold tracking-wide text-white uppercase sm:text-5xl"

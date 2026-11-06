@@ -2,9 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Img from '../../components/Img.astro';
 import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
 import { getContent } from '../../i18n/content';
-import { absUrl, businessJsonLd } from '../../i18n/site';
+import { absUrl, breadcrumbJsonLd, businessJsonLd } from '../../i18n/site';
 
 export function getStaticPaths() {
 	return getStaticLocalePaths();
@@ -15,12 +16,20 @@ const path = '/beach-club/';
 const { meta, hero } = await getContent(locale, 'beachClub');
 const { intro, gallery, marEMesa } = await getContent(locale, 'homepage');
 
-const jsonLd = businessJsonLd({
+const ui = await getContent(locale, 'ui');
+const business = businessJsonLd({
 	type: 'Restaurant',
 	url: absUrl(localePath(locale, path)),
 	description: meta.description,
 	image: absUrl(hero.image),
 });
+const jsonLd = [
+	business,
+	breadcrumbJsonLd([
+		{ name: ui.nav.home, path: localePath(locale, '/') },
+		{ name: ui.nav.beachClub, path: localePath(locale, path) },
+	]),
+];
 ---
 
 <Layout
@@ -35,7 +44,14 @@ const jsonLd = businessJsonLd({
 
 	<!-- Page hero -->
 	<section class="relative flex h-[45vh] min-h-[320px] items-center justify-center overflow-hidden">
-		<img src={hero.image} alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<Img
+			src={hero.image}
+			alt=""
+			class="absolute inset-0 h-full w-full object-cover"
+			widths={[800, 1280, 1920]}
+			loading="eager"
+			fetchpriority="high"
+		/>
 		<div class="absolute inset-0 bg-rumo-navy/30"></div>
 		<h1
 			class="font-display relative text-5xl font-bold tracking-wide text-white uppercase sm:text-6xl"
@@ -65,7 +81,13 @@ const jsonLd = businessJsonLd({
 	<section class="grid grid-cols-1 sm:grid-cols-3">
 		{
 			gallery.map((item: { image: string; alt: string }) => (
-				<img src={item.image} alt={item.alt} class="aspect-4/5 w-full object-cover" />
+				<Img
+					src={item.image}
+					alt={item.alt}
+					class="aspect-4/5 w-full object-cover"
+					widths={[480, 800, 1200]}
+					sizes="(min-width: 640px) 33vw, 100vw"
+				/>
 			))
 		}
 	</section>
@@ -85,10 +107,12 @@ const jsonLd = businessJsonLd({
 					{marEMesa.buttonLabel}
 				</a>
 			</div>
-			<img
+			<Img
 				src={marEMesa.image}
 				alt={marEMesa.imageAlt}
 				class="aspect-4/5 w-full rounded-xl object-cover"
+				widths={[480, 800, 1000]}
+				sizes="(min-width: 1024px) 40vw, (min-width: 640px) 45vw, 90vw"
 			/>
 		</div>
 	</section>

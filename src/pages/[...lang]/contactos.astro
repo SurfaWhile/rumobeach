@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
 import { getContent } from '../../i18n/content';
-import { absUrl, businessJsonLd, site } from '../../i18n/site';
+import { absUrl, breadcrumbJsonLd, businessJsonLd, site } from '../../i18n/site';
 
 export function getStaticPaths() {
 	return getStaticLocalePaths();
@@ -19,12 +19,19 @@ const mapSrc =
 	page.mapEmbedUrl ||
 	`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=15&output=embed`;
 
-const jsonLd = businessJsonLd({
+const business = businessJsonLd({
 	type: 'Restaurant',
 	url: absUrl(localePath(locale, path)),
 	description: page.meta.description,
 	image: absUrl(site.defaultOgImage),
 });
+const jsonLd = [
+	business,
+	breadcrumbJsonLd([
+		{ name: ui.nav.home, path: localePath(locale, '/') },
+		{ name: ui.nav.contacts, path: localePath(locale, path) },
+	]),
+];
 ---
 
 <Layout
