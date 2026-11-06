@@ -10,8 +10,7 @@ export const site = {
 		addressLocality: 'Ferrel',
 		addressCountry: 'PT',
 	},
-	opens: '09:00',
-	closes: '00:00',
+	opens: '10:00',
 	sameAs: [
 		'https://www.facebook.com/profile.php?id=61588020290619',
 		'https://www.instagram.com/rumobeach/',
@@ -55,7 +54,6 @@ export function businessJsonLd(opts: {
 					'Sunday',
 				],
 				opens: site.opens,
-				closes: site.closes,
 			},
 		],
 		sameAs: site.sameAs,
