@@ -39,11 +39,11 @@ const headerClass = [
 		]}
 	>
 		<div class="flex flex-1 items-center">
-			<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
+			<nav class="hidden gap-6 text-xs font-medium tracking-wide whitespace-nowrap uppercase lg:flex">
 				{left.map((l) => <a href={l.href} class="hover:text-rumo-gold">{l.label}</a>)}
 			</nav>
 
-			<details class="relative sm:hidden">
+			<details class="relative lg:hidden">
 				<summary
 					class="flex cursor-pointer list-none items-center [&::-webkit-details-marker]:hidden"
 					aria-label={ui.menuButton}
@@ -89,7 +89,7 @@ const headerClass = [
 		</a>
 
 		<div class="flex flex-1 items-center justify-end gap-6">
-			<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
+			<nav class="hidden gap-6 text-xs font-medium tracking-wide whitespace-nowrap uppercase lg:flex">
 				{right.map((l) => <a href={l.href} class="hover:text-rumo-gold">{l.label}</a>)}
 			</nav>
 			<ul class="flex gap-3 text-xs font-medium tracking-wide" aria-label={ui.languageLabel}>
