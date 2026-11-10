@@ -21,13 +21,23 @@ const right = [
 	{ href: localePath(locale, '/equipa/'), label: ui.nav.team },
 ];
 
-const headerClass = transparent
-	? 'absolute inset-x-0 top-0 z-10 text-white'
-	: 'relative z-10 border-b border-rumo-navy/10 bg-rumo-cream text-rumo-navy';
+// Sticky op alle pagina's. Op de homepage ligt het menu transparant over de
+// hero (fixed) en krijgt het een crèmekleurige achtergrond zodra er gescrold wordt.
+const headerClass = [
+	'group z-50 transition-colors duration-200',
+	transparent
+		? 'fixed inset-x-0 top-0 text-white data-[scrolled]:bg-rumo-cream data-[scrolled]:text-rumo-navy data-[scrolled]:shadow-sm'
+		: 'sticky top-0 border-b border-rumo-navy/10 bg-rumo-cream text-rumo-navy',
+].join(' ');
 ---
 
-<header class={headerClass}>
-	<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+<header class={headerClass} data-site-header data-transparent={transparent ? '' : undefined}>
+	<div
+		class:list={[
+			'mx-auto flex max-w-6xl items-center justify-between px-6 transition-[padding] duration-200',
+			transparent ? 'py-6 group-data-[scrolled]:py-3' : 'py-4',
+		]}
+	>
 		<div class="flex flex-1 items-center">
 			<nav class="hidden gap-6 text-xs font-medium tracking-wide uppercase sm:flex">
 				{left.map((l) => <a href={l.href} class="hover:text-rumo-gold">{l.label}</a>)}
@@ -59,12 +69,23 @@ const headerClass = transparent
 			</details>
 		</div>
 
-		<a href={home}>
+		<a href={home} class="flex flex-col items-center">
 			<img
 				src="/images/rumobeach/logo-amarelo.png"
 				alt={ui.logoAlt}
-				class:list={['h-10 w-auto', { 'brightness-0': !transparent }]}
+				class:list={[
+					'h-10 w-auto',
+					transparent ? 'group-data-[scrolled]:brightness-0' : 'brightness-0',
+				]}
 			/>
+			<span
+				class:list={[
+					'mt-1 text-[10px] leading-none font-medium tracking-[0.25em] whitespace-nowrap uppercase',
+					{ 'group-data-[scrolled]:hidden': transparent },
+				]}
+			>
+				{ui.tagline}
+			</span>
 		</a>
 
 		<div class="flex flex-1 items-center justify-end gap-6">
@@ -95,3 +116,13 @@ const headerClass = transparent
 		</div>
 	</div>
 </header>
+
+<script is:inline>
+	(() => {
+		const header = document.querySelector('[data-site-header][data-transparent]');
+		if (!header) return;
+		const update = () => header.toggleAttribute('data-scrolled', window.scrollY > 24);
+		update();
+		addEventListener('scroll', update, { passive: true });
+	})();
+</script>
