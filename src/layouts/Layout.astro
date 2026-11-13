@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { locales, localeCodes, localePath, defaultLocale, type Locale } from '../i18n/config';
 import { site } from '../i18n/site';
+import Analytics from '../components/Analytics.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
 	locale: Locale;
@@ -80,9 +82,11 @@ const jsonLdBlocks = ([] as object[])
 		/>
 
 		{jsonLdBlocks.map((block) => <script type="application/ld+json" set:html={block} />)}
+		<Analytics />
 		<slot name="head" />
 	</head>
 	<body class="min-h-screen bg-rumo-cream font-sans text-rumo-navy antialiased">
 		<slot />
+		<CookieBanner locale={locale} />
 	</body>
 </html>

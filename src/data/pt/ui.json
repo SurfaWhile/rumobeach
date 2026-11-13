@@ -16,5 +16,11 @@
     "title": "Página não encontrada",
     "body": "A página que procuras não existe ou mudou de sítio.",
     "back": "Voltar ao início"
+  },
+  "cookies": {
+    "text": "Usamos cookies de análise para perceber como o site é utilizado. Podes aceitar ou recusar.",
+    "accept": "Aceitar",
+    "decline": "Recusar",
+    "settings": "Definições de cookies"
   }
 }

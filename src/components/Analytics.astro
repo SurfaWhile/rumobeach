@@ -1,0 +1,34 @@
+---
+// Google Analytics (GA4) met Consent Mode v2: alles staat standaard op 'denied';
+// analytics_storage gaat pas aan na akkoord via de cookiebanner (keuze in localStorage).
+import { site } from '../i18n/site';
+---
+
+<script is:inline define:vars={{ gaId: site.gaId }}>
+	(() => {
+		if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return;
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		window.gtag = gtag;
+		gtag('consent', 'default', {
+			analytics_storage: 'denied',
+			ad_storage: 'denied',
+			ad_user_data: 'denied',
+			ad_personalization: 'denied',
+			wait_for_update: 500,
+		});
+		let choice = null;
+		try {
+			choice = localStorage.getItem('rumo-consent');
+		} catch (e) {}
+		if (choice === 'granted') gtag('consent', 'update', { analytics_storage: 'granted' });
+		gtag('js', new Date());
+		gtag('config', gaId);
+		const s = document.createElement('script');
+		s.async = true;
+		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+		document.head.appendChild(s);
+	})();
+</script>

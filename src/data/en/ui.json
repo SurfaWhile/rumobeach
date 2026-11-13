@@ -16,5 +16,11 @@
     "title": "Page not found",
     "body": "The page you are looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "cookies": {
+    "text": "We use analytics cookies to understand how our site is used. You can accept or decline.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "settings": "Cookie settings"
   }
 }

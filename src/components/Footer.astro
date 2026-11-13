@@ -24,6 +24,11 @@ const ui = await getContent(locale, 'ui');
 		<div class="text-center text-sm text-rumo-navy/70 sm:text-left">
 			<p><a href={`mailto:${footer.email}`} class="hover:text-rumo-navy">{footer.email}</a></p>
 			<p><a href={footer.phoneHref} target="_blank" rel="noopener" class="hover:text-rumo-navy">{footer.phoneLabel}</a></p>
+			<p>
+				<button type="button" data-cookie-settings class="cursor-pointer underline-offset-2 hover:text-rumo-navy hover:underline">
+					{ui.cookies.settings}
+				</button>
+			</p>
 		</div>
 
 		<div class="flex gap-4">

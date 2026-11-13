@@ -1,5 +1,7 @@
 export const site = {
 	name: 'Rumo Beach Baleal',
+	// Google-tag van de oude WordPress-site (Site Kit), zodat de GA4-historie doorloopt.
+	gaId: 'GT-KVFVZMRC',
 	url: 'https://rumobeach.com',
 	email: 'hello@rumobeach.com',
 	telephone: '+351925310525',

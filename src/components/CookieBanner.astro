@@ -1,0 +1,67 @@
+---
+import type { Locale } from '../i18n/config';
+import { getContent } from '../i18n/content';
+
+interface Props {
+	locale: Locale;
+}
+
+const ui = await getContent(Astro.props.locale, 'ui');
+const c = ui.cookies;
+---
+
+<div
+	id="cookie-banner"
+	hidden
+	role="dialog"
+	aria-label={c.settings}
+	class="fixed inset-x-4 bottom-4 z-[60] mx-auto max-w-xl rounded-xl border border-rumo-navy/10 bg-rumo-cream p-5 text-rumo-navy shadow-lg sm:flex sm:items-center sm:gap-5"
+>
+	<p class="text-sm text-rumo-navy/80">{c.text}</p>
+	<div class="mt-4 flex shrink-0 gap-3 sm:mt-0">
+		<button
+			type="button"
+			data-consent="denied"
+			class="cursor-pointer rounded-full border border-rumo-navy px-5 py-2 text-xs font-medium tracking-wide uppercase hover:bg-rumo-navy hover:text-white"
+		>
+			{c.decline}
+		</button>
+		<button
+			type="button"
+			data-consent="granted"
+			class="cursor-pointer rounded-full bg-rumo-yellow px-5 py-2 text-xs font-medium tracking-wide uppercase hover:bg-rumo-gold"
+		>
+			{c.accept}
+		</button>
+	</div>
+</div>
+
+<script is:inline>
+	(() => {
+		const banner = document.getElementById('cookie-banner');
+		if (!banner) return;
+		const read = () => {
+			try {
+				return localStorage.getItem('rumo-consent');
+			} catch (e) {
+				return null;
+			}
+		};
+		if (!read()) banner.hidden = false;
+		banner.querySelectorAll('[data-consent]').forEach((btn) =>
+			btn.addEventListener('click', () => {
+				const value = btn.getAttribute('data-consent');
+				try {
+					localStorage.setItem('rumo-consent', value);
+				} catch (e) {}
+				if (window.gtag) gtag('consent', 'update', { analytics_storage: value });
+				banner.hidden = true;
+			}),
+		);
+		document.querySelectorAll('[data-cookie-settings]').forEach((el) =>
+			el.addEventListener('click', () => {
+				banner.hidden = false;
+			}),
+		);
+	})();
+</script>
