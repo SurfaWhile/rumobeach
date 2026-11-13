@@ -8,32 +8,6 @@
     "body": "Os nossos instrutores acompanham cada sessão com paciência, experiência e um profundo conhecimento do mar aqui no Baleal.",
     "image": "/images/rumobeach/surfer-wave.jpg"
   },
-  "offerings": [
-    {
-      "title": "Aulas de Surf",
-      "body": "Para todos os níveis. Cada aula é adaptada a cada pessoa e às condições do dia."
-    },
-    {
-      "title": "Surf Coaching",
-      "body": "Focado na evolução do movimento e da técnica. Do high performance ao longboard, twinfin e estilos alternativos."
-    },
-    {
-      "title": "Academia",
-      "body": "Programas de treino personalizados."
-    },
-    {
-      "title": "Experiência em Família",
-      "body": "Tempo partilhado dentro e fora de água, para toda a família."
-    },
-    {
-      "title": "Programas para Crianças e Jovens",
-      "body": "Aulas de surf, atividades na praia e campos de férias para crianças e jovens. Contacta-nos para saber as datas de início!"
-    },
-    {
-      "title": "Aluguer de Material",
-      "body": "Equipamento de surf premium pronto a entrar no mar."
-    }
-  ],
   "ctaLabel": "Ver tudo e reservar online",
   "ctaHref": "https://rumo-beach-baleal.bookinglayer.com/en/",
   "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",

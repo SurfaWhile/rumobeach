@@ -8,32 +8,6 @@
     "body": "Our instructors guide every session with patience, experience and a deep knowledge of the sea here in Baleal.",
     "image": "/images/rumobeach/surfer-wave.jpg"
   },
-  "offerings": [
-    {
-      "title": "Surf Lessons",
-      "body": "For all levels. Every lesson is tailored to the individual and the conditions of the day."
-    },
-    {
-      "title": "Surf Coaching",
-      "body": "Focused on developing movement and technique. From high performance to longboard, twin fin and alternative styles."
-    },
-    {
-      "title": "Academy",
-      "body": "Personalised training programmes."
-    },
-    {
-      "title": "Family Experience",
-      "body": "Time shared in and out of the water, for the whole family."
-    },
-    {
-      "title": "Programmes for Children and Teens",
-      "body": "Surf lessons, beach activities and holiday camps for children and teens. Get in touch to find out the start dates!"
-    },
-    {
-      "title": "Equipment Rental",
-      "body": "Premium surf equipment, ready to hit the water."
-    }
-  ],
   "ctaLabel": "View all and book online",
   "ctaHref": "https://rumo-beach-baleal.bookinglayer.com/en/",
   "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
