@@ -34,9 +34,57 @@
       "body": "Premium surf equipment, ready to hit the water."
     }
   ],
-  "ctaLabel": "Book lessons",
-  "ctaHref": "#",
+  "ctaLabel": "View all and book online",
+  "ctaHref": "https://rumo-beach-baleal.bookinglayer.com/en/",
   "image": "/images/rumobeach/surfer-sunset-silhouette.jpg",
   "imageAlt": "Surf lessons on Baleal beach",
-  "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
+  "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal",
+  "packages": {
+    "heading": "Surf packages",
+    "intro": "Pick a package and book it straight away in our booking system.",
+    "buttonLabel": "Book",
+    "allLabel": "View all and book online",
+    "items": [
+      {
+        "title": "Group classes",
+        "body": "Surf together with a small group, tailored to your level.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/activities/group-classes"
+      },
+      {
+        "title": "Private class",
+        "body": "One-on-one coaching, tailored to you and the conditions of the day.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/activities/private-class-i-will-explain-this-on-our-meeting"
+      },
+      {
+        "title": "Rumo Academy · Intermediate",
+        "body": "Monthly training programme for intermediate surfers.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/rumo-academy-intermediate-monthly"
+      },
+      {
+        "title": "Surf Mamas",
+        "body": "Surf sessions made for mums.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/surf-mamas/"
+      },
+      {
+        "title": "Junior Academy · 1 month",
+        "body": "Surf programme for children and teens, one month.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/junior-academy-monthly"
+      },
+      {
+        "title": "Junior Academy · 3 months",
+        "body": "Surf programme for children and teens, three months.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/junior-academy-quarterly"
+      },
+      {
+        "title": "Junior Academy · 6 months",
+        "body": "Surf programme for children and teens, six months.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/junior-academy-6-months"
+      },
+      {
+        "title": "Oeste Academia · Kids & Youth",
+        "body": "Surf classes for kids and youth with Oeste Academia.",
+        "href": "https://rumo-beach-baleal.bookinglayer.com/en/product/oeste-academia-kids-and-youth-surf-class"
+      }
+    ]
+  }
 }
