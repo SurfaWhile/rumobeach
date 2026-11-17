@@ -748,6 +748,10 @@ collections:
                 name: "beachClub"
                 widget: "string"
                 i18n: true
+              - label: "Menu: Events"
+                name: "events"
+                widget: "string"
+                i18n: true
               - label: "Menu: Contact"
                 name: "contacts"
                 widget: "string"
