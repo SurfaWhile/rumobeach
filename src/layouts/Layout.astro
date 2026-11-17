@@ -4,6 +4,7 @@ import { locales, localeCodes, localePath, defaultLocale, type Locale } from '..
 import { site } from '../i18n/site';
 import Analytics from '../components/Analytics.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface Props {
 	locale: Locale;
@@ -87,6 +88,7 @@ const jsonLdBlocks = ([] as object[])
 	</head>
 	<body class="min-h-screen bg-rumo-cream font-sans text-rumo-navy antialiased">
 		<slot />
+		<WhatsAppButton locale={locale} />
 		<CookieBanner locale={locale} />
 	</body>
 </html>
