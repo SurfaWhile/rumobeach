@@ -153,7 +153,7 @@ const button =
 	</section>
 
 	<!-- What's on (agenda) -->
-	<section class="bg-rumo-cream px-6 py-24" id="agenda">
+	<section class="bg-rumo-cream px-6 py-24" id="events">
 		<div class="mx-auto max-w-3xl">
 			<div class="text-center">
 				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{agenda.heading}</h2>
@@ -163,7 +163,7 @@ const button =
 				<EventList locale={locale} limit={3} />
 			</div>
 			<div class="mt-10 text-center">
-				<a href={localePath(locale, '/agenda/')} class={button}>{agenda.viewAll}</a>
+				<a href={localePath(locale, '/events/')} class={button}>{agenda.viewAll}</a>
 			</div>
 		</div>
 	</section>

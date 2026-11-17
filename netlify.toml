@@ -24,3 +24,28 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
+
+# /agenda/ heet nu /events/
+[[redirects]]
+  from = "/agenda"
+  to = "/events/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/agenda/"
+  to = "/events/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/agenda"
+  to = "/en/events/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/agenda/"
+  to = "/en/events/"
+  status = 301
+  force = true
