@@ -2,7 +2,7 @@ import { defaultLocale, type Locale } from './config';
 
 const files = import.meta.glob('../data/*/*.json', { eager: true, import: 'default' });
 
-export type ContentName = 'homepage' | 'beachClub' | 'surfClub' | 'contactos' | 'team' | 'ui';
+export type ContentName = 'homepage' | 'beachClub' | 'surfClub' | 'contactos' | 'team' | 'ui' | 'agenda';
 
 // Enige plek die weet waar content vandaan komt: later vervangbaar door een WordPress REST-call.
 // Ontbreekt een vertaling, dan valt het terug op de standaardtaal.

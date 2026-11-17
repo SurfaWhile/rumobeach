@@ -625,6 +625,103 @@ collections:
                 name: "backLabel"
                 widget: "string"
                 i18n: true
+      - name: "agenda"
+        label: "Agenda: teksten van de pagina"
+        file: "src/data/{{locale}}/agenda.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Kop"
+            name: "heading"
+            widget: "string"
+            i18n: true
+          - label: "Intro"
+            name: "intro"
+            widget: "text"
+            i18n: true
+          - label: "Tekst als er geen events zijn"
+            name: "empty"
+            widget: "string"
+            i18n: true
+          - label: "Knoptekst 'meer info'"
+            name: "moreInfo"
+            widget: "string"
+            i18n: true
+          - label: "Knoptekst 'alle events'"
+            name: "viewAll"
+            widget: "string"
+            i18n: true
+          - label: "Woord 'tot/until'"
+            name: "untilLabel"
+            widget: "string"
+            i18n: true
+  - name: "agenda_items"
+    label: "Agenda: evenementen"
+    files:
+      - name: "events"
+        label: "Evenementen"
+        file: "src/data/events.json"
+        fields:
+          - label: "Evenementen"
+            label_singular: "Evenement"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.date}} · {{fields.title_en}}"
+            hint: "Voorbije evenementen verdwijnen automatisch van de site; je hoeft ze niet te verwijderen."
+            fields:
+              - label: "Datum"
+                name: "date"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+              - label: "Einddatum (alleen bij meerdaags)"
+                name: "endDate"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+                required: false
+              - label: "Tijd (bv. 19:00)"
+                name: "time"
+                widget: "string"
+                required: false
+              - label: "Titel (Portugees)"
+                name: "title_pt"
+                widget: "string"
+              - label: "Titel (Engels)"
+                name: "title_en"
+                widget: "string"
+              - label: "Omschrijving (Portugees)"
+                name: "description_pt"
+                widget: "text"
+                required: false
+              - label: "Omschrijving (Engels)"
+                name: "description_en"
+                widget: "text"
+                required: false
+              - label: "Foto (optioneel)"
+                name: "image"
+                widget: "image"
+                required: false
+              - label: "Link (bv. reserveren of tickets)"
+                name: "link"
+                widget: "string"
+                required: false
   - name: "algemeen"
     label: "Menu & algemene teksten"
     i18n: true

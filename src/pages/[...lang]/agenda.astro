@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EventList from '../../components/EventList.astro';
+import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
+import { getContent } from '../../i18n/content';
+import { breadcrumbJsonLd } from '../../i18n/site';
+import { eventsJsonLd, upcomingEvents } from '../../lib/events';
+
+export function getStaticPaths() {
+	return getStaticLocalePaths();
+}
+
+const locale = localeFromParams(Astro.params.lang);
+const path = '/agenda/';
+const page = await getContent(locale, 'agenda');
+const ui = await getContent(locale, 'ui');
+
+const jsonLd = [
+	breadcrumbJsonLd([
+		{ name: ui.nav.home, path: localePath(locale, '/') },
+		{ name: page.heading, path: localePath(locale, path) },
+	]),
+	...eventsJsonLd(upcomingEvents(locale), localePath(locale, path)),
+];
+---
+
+<Layout
+	locale={locale}
+	path={path}
+	title={page.meta.title}
+	description={page.meta.description}
+	jsonLd={jsonLd}
+>
+	<Header locale={locale} path={path} transparent={false} />
+
+	<section class="bg-rumo-yellow px-6 py-20">
+		<div class="mx-auto max-w-3xl">
+			<div class="text-center">
+				<h1 class="font-display text-4xl font-semibold sm:text-5xl">{page.heading}</h1>
+				<div class="mx-auto mt-5 h-0.5 w-24 bg-rumo-navy/40"></div>
+				<p class="mt-6 text-rumo-navy/80">{page.intro}</p>
+			</div>
+			<div class="mt-12">
+				<EventList locale={locale} />
+			</div>
+		</div>
+	</section>
+
+	<Footer locale={locale} />
+</Layout>

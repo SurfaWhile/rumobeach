@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Img from '../../components/Img.astro';
+import EventList from '../../components/EventList.astro';
 import { imgUrl } from '../../lib/image';
 import { getStaticLocalePaths, localeFromParams, localePath, locales } from '../../i18n/config';
 import { getContent } from '../../i18n/content';
@@ -19,6 +20,7 @@ const { meta, hero, intro, cards, story, around, newsletter } = await getContent
 	'homepage',
 );
 const ui = await getContent(locale, 'ui');
+const agenda = await getContent(locale, 'agenda');
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(around.mapAddress)}&output=embed`;
 const posterUrl = imgUrl(hero.poster, 1280, 'webp');
 
@@ -147,6 +149,22 @@ const button =
 				widths={[480, 800, 1000]}
 				sizes="(min-width: 1024px) 480px, (min-width: 640px) 45vw, 90vw"
 			/>
+		</div>
+	</section>
+
+	<!-- What's on (agenda) -->
+	<section class="bg-rumo-cream px-6 py-24" id="agenda">
+		<div class="mx-auto max-w-3xl">
+			<div class="text-center">
+				<h2 class="font-display text-3xl font-semibold sm:text-4xl">{agenda.heading}</h2>
+				<p class="mt-4 text-sm text-rumo-navy/70">{agenda.intro}</p>
+			</div>
+			<div class="mt-10">
+				<EventList locale={locale} limit={3} />
+			</div>
+			<div class="mt-10 text-center">
+				<a href={localePath(locale, '/agenda/')} class={button}>{agenda.viewAll}</a>
+			</div>
 		</div>
 	</section>
 
