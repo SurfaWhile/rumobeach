@@ -1,7 +1,7 @@
 # Sveltia CMS-configuratie voor Rumo Beach. Gegenereerd uit src/data/*; velden toevoegen? Pas ook de site-code aan.
 backend:
   name: "github"
-  repo: "SurfaWhile/rumo-beach"
+  repo: "SurfaWhile/rumobeach"
   branch: "main"
 site_url: "https://rumo-beach.netlify.app"
 display_url: "https://rumo-beach.netlify.app"
