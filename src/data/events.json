@@ -1,14 +1,25 @@
 {
   "items": [
     {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "endDate": "",
       "time": "",
       "title_pt": "Funky Friday",
       "title_en": "Funky Friday",
       "description_pt": "This is a test description",
       "description_en": "This is a test description",
-      "image": "/images/rumobeach/drone-beach-1.jpg",
+      "image": "/images/rumobeach/food-5.jpg",
+      "link": ""
+    },
+    {
+      "date": "2026-12-06",
+      "endDate": "",
+      "time": "Sunday Brunch",
+      "title_pt": "Sunday Brunch",
+      "title_en": "Sunday Brunch",
+      "description_pt": "This is a test description",
+      "description_en": "This is a test description",
+      "image": "/images/rumobeach/food-3.jpg",
       "link": ""
     }
   ]
