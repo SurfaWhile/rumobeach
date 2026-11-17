@@ -1,0 +1,723 @@
+# Sveltia CMS-configuratie voor Rumo Beach. Gegenereerd uit src/data/*; velden toevoegen? Pas ook de site-code aan.
+backend:
+  name: "github"
+  repo: "SurfaWhile/rumo-beach"
+  branch: "main"
+site_url: "https://rumo-beach.netlify.app"
+display_url: "https://rumo-beach.netlify.app"
+media_folder: "public/images/rumobeach"
+public_folder: "/images/rumobeach"
+i18n:
+  structure: "multiple_folders"
+  locales:
+    - "pt"
+    - "en"
+  default_locale: "pt"
+collections:
+  - name: "paginas"
+    label: "Pagina's"
+    i18n: true
+    files:
+      - name: "home"
+        label: "Home"
+        file: "src/data/{{locale}}/homepage.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Bovenste beeld (hero)"
+            name: "hero"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Video (technisch, niet wijzigen)"
+                name: "video"
+                widget: "string"
+                i18n: "duplicate"
+                required: false
+                hint: "Technisch veld (hero-video). Niet wijzigen."
+              - label: "Afbeelding (poster)"
+                name: "poster"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+              - label: "Ondertitel"
+                name: "subtitle"
+                widget: "string"
+                i18n: true
+          - label: "Intro"
+            name: "intro"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+          - label: "Kaarten"
+            name: "cards"
+            widget: "list"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: true
+              - label: "Alt-tekst afbeelding (beschrijving voor screenreaders)"
+                name: "imageAlt"
+                widget: "string"
+                i18n: true
+              - label: "Link"
+                name: "href"
+                widget: "string"
+                i18n: true
+              - label: "Knoptekst"
+                name: "buttonLabel"
+                widget: "string"
+                i18n: true
+            summary: "{{fields.title}}"
+          - label: "Verhaal"
+            name: "story"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Alinea's"
+                name: "paragraphs"
+                widget: "list"
+                i18n: true
+                field:
+                  label: "Alinea"
+                  name: "item"
+                  widget: "text"
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+              - label: "Alt-tekst afbeelding (beschrijving voor screenreaders)"
+                name: "imageAlt"
+                widget: "string"
+                i18n: true
+          - label: "Rondom Rumo"
+            name: "around"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Adres (voor de kaart)"
+                name: "mapAddress"
+                widget: "string"
+                i18n: "duplicate"
+          - label: "Nieuwsbrief"
+            name: "newsletter"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Knoptekst"
+                name: "buttonLabel"
+                widget: "string"
+                i18n: true
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Adresregel 1"
+                name: "addressLine1"
+                widget: "string"
+                i18n: true
+              - label: "Adresregel 2"
+                name: "addressLine2"
+                widget: "string"
+                i18n: true
+              - label: "Openingstijden"
+                name: "hours"
+                widget: "string"
+                i18n: true
+              - label: "E-mail"
+                name: "email"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Telefoon (weergave)"
+                name: "phoneLabel"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Telefoon / WhatsApp-link"
+                name: "phoneHref"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Facebook-link"
+                name: "facebook"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Instagram-link"
+                name: "instagram"
+                widget: "string"
+                i18n: "duplicate"
+      - name: "beach-restaurant"
+        label: "Beach Restaurant & Bar"
+        file: "src/data/{{locale}}/beachClub.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Bovenste beeld (hero)"
+            name: "hero"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+          - label: "Intro"
+            name: "intro"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Subkop"
+                name: "subheading"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Knoptekst"
+                name: "buttonLabel"
+                widget: "string"
+                i18n: true
+              - label: "Knop-link"
+                name: "buttonHref"
+                widget: "string"
+                i18n: "duplicate"
+          - label: "Fotogalerij"
+            name: "gallery"
+            widget: "list"
+            i18n: true
+            fields:
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: true
+              - label: "Alt"
+                name: "alt"
+                widget: "string"
+                i18n: true
+          - label: "Tweede blok (Entre o mar e a mesa)"
+            name: "marEMesa"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Alinea's"
+                name: "paragraphs"
+                widget: "list"
+                i18n: true
+                field:
+                  label: "Alinea"
+                  name: "item"
+                  widget: "text"
+              - label: "Knoptekst"
+                name: "buttonLabel"
+                widget: "string"
+                i18n: true
+              - label: "Knop-link"
+                name: "buttonHref"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+              - label: "Alt-tekst afbeelding (beschrijving voor screenreaders)"
+                name: "imageAlt"
+                widget: "string"
+                i18n: true
+      - name: "surf"
+        label: "Surf Lessons & Rental (incl. pakketten)"
+        file: "src/data/{{locale}}/surfClub.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Bovenste beeld (hero)"
+            name: "hero"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+          - label: "Hoofdknop (tekst)"
+            name: "ctaLabel"
+            widget: "string"
+            i18n: true
+          - label: "Hoofdknop (link naar boekingssysteem)"
+            name: "ctaHref"
+            widget: "string"
+            i18n: "duplicate"
+          - label: "Afbeelding"
+            name: "image"
+            widget: "image"
+            required: false
+            i18n: "duplicate"
+          - label: "Alt-tekst afbeelding (beschrijving voor screenreaders)"
+            name: "imageAlt"
+            widget: "string"
+            i18n: true
+          - label: "Adres (voor de kaart)"
+            name: "mapAddress"
+            widget: "string"
+            i18n: "duplicate"
+          - label: "Surfpakketten"
+            name: "packages"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Intro"
+                name: "intro"
+                widget: "text"
+                i18n: true
+              - label: "Knoptekst"
+                name: "buttonLabel"
+                widget: "string"
+                i18n: true
+              - label: "Tekst 'alles bekijken'"
+                name: "allLabel"
+                widget: "string"
+                i18n: true
+              - label: "Pakketten"
+                name: "items"
+                widget: "list"
+                i18n: true
+                fields:
+                  - label: "Titel"
+                    name: "title"
+                    widget: "string"
+                    i18n: true
+                  - label: "Tekst"
+                    name: "body"
+                    widget: "text"
+                    i18n: true
+                  - label: "Link"
+                    name: "href"
+                    widget: "string"
+                    i18n: true
+                summary: "{{fields.title}}"
+      - name: "contact"
+        label: "Contact"
+        file: "src/data/{{locale}}/contactos.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Kop"
+            name: "heading"
+            widget: "string"
+            i18n: true
+          - label: "Naam"
+            name: "name"
+            widget: "string"
+            i18n: true
+          - label: "Telefoon (weergave)"
+            name: "phoneLabel"
+            widget: "string"
+            i18n: "duplicate"
+          - label: "Label e-mail"
+            name: "emailLabel"
+            widget: "string"
+            i18n: true
+          - label: "Openingstijden"
+            name: "hours"
+            widget: "string"
+            i18n: true
+          - label: "Tekst WhatsApp-knop"
+            name: "whatsappLabel"
+            widget: "string"
+            i18n: true
+          - label: "Kaart-embed-URL (optioneel)"
+            name: "mapEmbedUrl"
+            widget: "string"
+            i18n: "duplicate"
+            required: false
+            hint: "Technisch veld: alleen wijzigen als je weet wat je doet."
+          - label: "Zoekopdracht voor de kaart"
+            name: "mapQuery"
+            widget: "string"
+            i18n: "duplicate"
+            required: false
+            hint: "Technisch veld: alleen wijzigen als je weet wat je doet."
+      - name: "team"
+        label: "Join the team"
+        file: "src/data/{{locale}}/team.json"
+        i18n: true
+        fields:
+          - label: "SEO (Google-resultaat)"
+            name: "meta"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+              - label: "Beschrijving"
+                name: "description"
+                widget: "text"
+                i18n: true
+                hint: "Titel/beschrijving zoals getoond in Google. Titel ± 60 tekens, beschrijving ± 155."
+          - label: "Bovenste beeld (hero)"
+            name: "hero"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Afbeelding"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+          - label: "Intro"
+            name: "intro"
+            widget: "text"
+            i18n: true
+          - label: "Kop voordelen"
+            name: "benefitsHeading"
+            widget: "string"
+            i18n: true
+          - label: "Voordelen"
+            name: "benefits"
+            widget: "list"
+            i18n: true
+            field:
+              label: "Item"
+              name: "item"
+              widget: "string"
+          - label: "Sollicitatieformulier (labels)"
+            name: "form"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Naam"
+                name: "name"
+                widget: "string"
+                i18n: true
+              - label: "Woonplaats"
+                name: "residence"
+                widget: "string"
+                i18n: true
+              - label: "E-mail"
+                name: "email"
+                widget: "string"
+                i18n: "duplicate"
+              - label: "Geboortedatum"
+                name: "birthdate"
+                widget: "string"
+                i18n: true
+              - label: "Mobiel"
+                name: "phone"
+                widget: "string"
+                i18n: true
+              - label: "Vraag: hoe gevonden"
+                name: "discoverLabel"
+                widget: "string"
+                i18n: true
+              - label: "Antwoordopties: hoe gevonden"
+                name: "discoverOptions"
+                widget: "list"
+                i18n: true
+                fields:
+                  - label: "Waarde (technisch, niet wijzigen)"
+                    name: "value"
+                    widget: "string"
+                    i18n: true
+                    required: false
+                    hint: "Technisch veld: alleen wijzigen als je weet wat je doet."
+                  - label: "Label"
+                    name: "label"
+                    widget: "string"
+                    i18n: true
+                summary: "{{fields.label}}"
+              - label: "Vraag: functie"
+                name: "rolesLabel"
+                widget: "string"
+                i18n: true
+              - label: "Functies"
+                name: "roles"
+                widget: "list"
+                i18n: true
+                fields:
+                  - label: "Waarde (technisch, niet wijzigen)"
+                    name: "value"
+                    widget: "string"
+                    i18n: true
+                    required: false
+                    hint: "Technisch veld: alleen wijzigen als je weet wat je doet."
+                  - label: "Label"
+                    name: "label"
+                    widget: "string"
+                    i18n: true
+                summary: "{{fields.label}}"
+              - label: "Label CV"
+                name: "cvLabel"
+                widget: "string"
+                i18n: true
+              - label: "Hint CV"
+                name: "cvHint"
+                widget: "string"
+                i18n: true
+              - label: "Toestemmingstekst"
+                name: "consent"
+                widget: "text"
+                i18n: true
+              - label: "Verzendknop"
+                name: "submit"
+                widget: "string"
+                i18n: true
+          - label: "Bedankpagina"
+            name: "thanks"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "SEO (Google-resultaat)"
+                name: "meta"
+                widget: "object"
+                i18n: true
+                fields:
+                  - label: "Titel"
+                    name: "title"
+                    widget: "string"
+                    i18n: true
+                  - label: "Beschrijving"
+                    name: "description"
+                    widget: "text"
+                    i18n: true
+              - label: "Kop"
+                name: "heading"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Tekst terugknop"
+                name: "backLabel"
+                widget: "string"
+                i18n: true
+  - name: "algemeen"
+    label: "Menu & algemene teksten"
+    i18n: true
+    files:
+      - name: "ui"
+        label: "Menu, cookiebanner en 404"
+        file: "src/data/{{locale}}/ui.json"
+        i18n: true
+        fields:
+          - label: "Menu"
+            name: "nav"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Home"
+                name: "home"
+                widget: "string"
+                i18n: true
+              - label: "Menu: Surf Lessons & Rental"
+                name: "surfClub"
+                widget: "string"
+                i18n: true
+              - label: "Menu: Beach Restaurant & Bar"
+                name: "beachClub"
+                widget: "string"
+                i18n: true
+              - label: "Menu: Contact"
+                name: "contacts"
+                widget: "string"
+                i18n: true
+              - label: "Menu: Join the team"
+                name: "team"
+                widget: "string"
+                i18n: true
+          - label: "Tekst menuknop (mobiel)"
+            name: "menuButton"
+            widget: "string"
+            i18n: true
+          - label: "Label taalkeuze"
+            name: "languageLabel"
+            widget: "string"
+            i18n: true
+          - label: "Placeholder e-mailveld"
+            name: "emailPlaceholder"
+            widget: "string"
+            i18n: true
+          - label: "Titel kaart (toegankelijkheid)"
+            name: "mapTitle"
+            widget: "string"
+            i18n: true
+          - label: "Alt-tekst logo"
+            name: "logoAlt"
+            widget: "string"
+            i18n: true
+          - label: "Tagline onder logo"
+            name: "tagline"
+            widget: "string"
+            i18n: true
+          - label: "404-pagina"
+            name: "notFound"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Titel"
+                name: "title"
+                widget: "string"
+                i18n: true
+              - label: "Tekst"
+                name: "body"
+                widget: "text"
+                i18n: true
+              - label: "Tekst terugknop"
+                name: "back"
+                widget: "string"
+                i18n: true
+          - label: "Cookiebanner"
+            name: "cookies"
+            widget: "object"
+            i18n: true
+            fields:
+              - label: "Tekst"
+                name: "text"
+                widget: "string"
+                i18n: true
+              - label: "Knop accepteren"
+                name: "accept"
+                widget: "string"
+                i18n: true
+              - label: "Knop weigeren"
+                name: "decline"
+                widget: "string"
+                i18n: true
+              - label: "Footerlink cookie-instellingen"
+                name: "settings"
+                widget: "string"
+                i18n: true
