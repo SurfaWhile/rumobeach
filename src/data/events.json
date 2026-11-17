@@ -1,3 +1,15 @@
 {
-  "items": []
+  "items": [
+    {
+      "date": "2026-11-27",
+      "endDate": "",
+      "time": "",
+      "title_pt": "Funky Friday",
+      "title_en": "Funky Friday",
+      "description_pt": "This is a test description",
+      "description_en": "This is a test description",
+      "image": "/images/rumobeach/drone-beach-1.jpg",
+      "link": ""
+    }
+  ]
 }
