@@ -1,0 +1,50 @@
+---
+// Veelgestelde vragen van één pagina. Rendert niets als er geen vragen zijn.
+// De bijbehorende FAQPage-JSON-LD wordt door de pagina zelf meegegeven (faqJsonLd).
+import type { Locale } from '../i18n/config';
+import { getContent } from '../i18n/content';
+import type { FaqItem } from '../lib/faq';
+
+interface Props {
+	locale: Locale;
+	items: FaqItem[];
+}
+
+const { locale, items } = Astro.props;
+const ui = await getContent(locale, 'ui');
+---
+
+{
+	items.length > 0 && (
+		<section class="bg-white px-6 py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-3xl">
+				<h2 id="faq-heading" class="font-display text-center text-3xl font-semibold sm:text-4xl">
+					{ui.faqHeading}
+				</h2>
+				<div class="mx-auto mt-5 h-0.5 w-24 bg-rumo-navy/40" />
+				<div class="mt-10 grid gap-3">
+					{items.map((i) => (
+						<details class="group rounded-xl border border-rumo-navy/10 bg-rumo-cream">
+							<summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-medium [&::-webkit-details-marker]:hidden">
+								<span>{i.question}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									class="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+									aria-hidden="true"
+								>
+									<path d="m6 9 6 6 6-6" />
+								</svg>
+							</summary>
+							<div class="px-5 pb-5 whitespace-pre-line text-rumo-navy/80">{i.answer}</div>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+	)
+}

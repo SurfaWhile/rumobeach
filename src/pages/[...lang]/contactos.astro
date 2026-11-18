@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { faqFor, faqJsonLd } from '../../lib/faq';
 import { getStaticLocalePaths, localeFromParams, localePath } from '../../i18n/config';
 import { getContent } from '../../i18n/content';
 import { absUrl, breadcrumbJsonLd, businessJsonLd, site } from '../../i18n/site';
@@ -25,7 +27,9 @@ const business = businessJsonLd({
 	description: page.meta.description,
 	image: absUrl(site.defaultOgImage),
 });
+const faq = faqFor(locale, 'contact');
 const jsonLd = [
+	...faqJsonLd(faq),
 	business,
 	breadcrumbJsonLd([
 		{ name: ui.nav.home, path: localePath(locale, '/') },
@@ -91,6 +95,8 @@ const jsonLd = [
 			</div>
 		</div>
 	</section>
+
+	<FaqSection locale={locale} items={faq} />
 
 	<Footer locale={locale} />
 </Layout>

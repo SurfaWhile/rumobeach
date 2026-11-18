@@ -722,6 +722,48 @@ collections:
                 name: "link"
                 widget: "string"
                 required: false
+  - name: "faq"
+    label: "FAQ (veelgestelde vragen)"
+    files:
+      - name: "faq"
+        label: "Veelgestelde vragen"
+        file: "src/data/faq.json"
+        fields:
+          - label: "Vragen"
+            label_singular: "Vraag"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.question_en}}"
+            hint: "Komt als uitklapbare lijst onderaan de gekozen pagina's en wordt automatisch als FAQ-structured data (schema.org FAQPage) voor Google meegegeven. Houd antwoorden kort en feitelijk; alleen vragen die ook echt zichtbaar op de pagina staan."
+            fields:
+              - label: "Op welke pagina('s) tonen?"
+                name: "pages"
+                widget: "select"
+                multiple: true
+                min: 1
+                options:
+                  - label: "Home"
+                    value: "home"
+                  - label: "Surf Lessons & Rental"
+                    value: "surf-club"
+                  - label: "Beach Restaurant & Bar"
+                    value: "beach-club"
+                  - label: "Contact"
+                    value: "contact"
+              - label: "Vraag (Portugees)"
+                name: "question_pt"
+                widget: "string"
+              - label: "Vraag (Engels)"
+                name: "question_en"
+                widget: "string"
+              - label: "Antwoord (Portugees)"
+                name: "answer_pt"
+                widget: "text"
+                hint: "Gewone tekst, geen opmaak. Lege regel = nieuwe alinea."
+              - label: "Antwoord (Engels)"
+                name: "answer_en"
+                widget: "text"
+                hint: "Gewone tekst, geen opmaak. Lege regel = nieuwe alinea."
   - name: "algemeen"
     label: "Menu & algemene teksten"
     i18n: true
@@ -782,6 +824,10 @@ collections:
             i18n: true
           - label: "Tagline onder logo"
             name: "tagline"
+            widget: "string"
+            i18n: true
+          - label: "Kop van de FAQ-sectie"
+            name: "faqHeading"
             widget: "string"
             i18n: true
           - label: "404-pagina"
