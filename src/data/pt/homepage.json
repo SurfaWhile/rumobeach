@@ -49,6 +49,8 @@
   "around": {
     "heading": "À volta do Rumo.",
     "body": "O Rumo repousa discretamente entre as dunas, ligeiramente fora de vista, com o oceano logo ali ao lado. Daqui, podes seguir em diferentes direções — até à ilha, às praias ou aos surf spots — ou regressar devagar ao ponto de partida, dependendo do rumo que o dia tomar.",
+    "image": "/images/rumobeach/around-map.jpg",
+    "imageAlt": "Mapa ilustrado da costa à volta do Rumo Beach Baleal, com Nazaré, Óbidos, Lisboa e os surf spots Supertubos, Santa Cruz e Ericeira, com tempos de viagem",
     "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
   },
   "newsletter": {

@@ -147,6 +147,15 @@ collections:
                 name: "body"
                 widget: "text"
                 i18n: true
+              - label: "Afbeelding (kaart van de omgeving)"
+                name: "image"
+                widget: "image"
+                required: false
+                i18n: "duplicate"
+              - label: "Alt-tekst afbeelding (beschrijving voor screenreaders)"
+                name: "imageAlt"
+                widget: "string"
+                i18n: true
               - label: "Adres (voor de kaart)"
                 name: "mapAddress"
                 widget: "string"
