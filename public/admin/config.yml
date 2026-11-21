@@ -3,6 +3,8 @@ backend:
   name: "github"
   repo: "SurfaWhile/rumobeach"
   branch: "main"
+  base_url: "https://api.netlify.com"
+  auth_endpoint: "auth"
 site_url: "https://rumo-beach.netlify.app"
 display_url: "https://rumo-beach.netlify.app"
 media_folder: "public/images/rumobeach"
