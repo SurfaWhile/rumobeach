@@ -51,6 +51,8 @@
     "body": "Rumo rests quietly among the dunes, slightly out of sight, with the ocean right next door. From here you can head in different directions — to the island, the beaches or the surf spots — or slowly return to where you started, depending on the course the day takes.",
     "image": "/images/rumobeach/around-map.jpg",
     "imageAlt": "Illustrated map of the coast around Rumo Beach Baleal, showing Nazaré, Óbidos, Lisbon and the surf spots Supertubos, Santa Cruz and Ericeira, with travel times",
+    "tabIllustrated": "Illustrated",
+    "tabMap": "Google Maps",
     "mapAddress": "Rua Praia do Baleal, Baleal S/N, 2520-051 Ferrel, Portugal"
   },
   "newsletter": {

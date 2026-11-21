@@ -156,6 +156,14 @@ collections:
                 name: "imageAlt"
                 widget: "string"
                 i18n: true
+              - label: "Tabknop: illustratie"
+                name: "tabIllustrated"
+                widget: "string"
+                i18n: true
+              - label: "Tabknop: Google Maps"
+                name: "tabMap"
+                widget: "string"
+                i18n: true
               - label: "Adres (voor de kaart)"
                 name: "mapAddress"
                 widget: "string"

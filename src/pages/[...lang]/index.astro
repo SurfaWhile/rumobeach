@@ -178,20 +178,84 @@ const button =
 			<h2 class="font-display text-3xl font-semibold sm:text-4xl">{around.heading}</h2>
 			<p class="mt-6 text-sm text-rumo-navy/80">{around.body}</p>
 		</div>
-		{
-			around.image && (
-				<Img
-					src={around.image}
-					alt={around.imageAlt}
-					class="mx-auto mt-10 aspect-3/2 w-full max-w-5xl rounded-xl object-cover"
-					widths={[640, 1000, 1479]}
-					sizes="(min-width: 1024px) 1024px, 92vw"
-				/>
-			)
-		}
-		<div class="mx-auto mt-6 max-w-5xl overflow-hidden rounded-xl">
-			<iframe title={ui.mapTitle} class="h-96 w-full border-0" loading="lazy" src={mapSrc}></iframe>
+		<div class="mx-auto mt-10 max-w-5xl" data-map-tabs>
+			{
+				around.image && (
+					<div class="mb-5 hidden justify-center gap-2" role="tablist" data-tablist>
+						{[
+							{ id: 'illustrated', label: around.tabIllustrated },
+							{ id: 'map', label: around.tabMap },
+						].map((t, i) => (
+							<button
+								type="button"
+								role="tab"
+								id={`map-tab-${t.id}`}
+								aria-controls={`map-panel-${t.id}`}
+								aria-selected={i === 0 ? 'true' : 'false'}
+								data-tab={t.id}
+								class="rounded-full border border-rumo-navy px-6 py-2 text-xs font-medium tracking-wide uppercase aria-selected:bg-rumo-navy aria-selected:text-white"
+							>
+								{t.label}
+							</button>
+						))}
+					</div>
+				)
+			}
+			{
+				around.image && (
+					<div id="map-panel-illustrated" role="tabpanel" aria-labelledby="map-tab-illustrated">
+						<Img
+							src={around.image}
+							alt={around.imageAlt}
+							class="aspect-3/2 w-full rounded-xl object-cover"
+							widths={[640, 1000, 1479]}
+							sizes="(min-width: 1024px) 1024px, 92vw"
+						/>
+					</div>
+				)
+			}
+			<div
+				id="map-panel-map"
+				role={around.image ? 'tabpanel' : undefined}
+				aria-labelledby={around.image ? 'map-tab-map' : undefined}
+				class:list={['overflow-hidden rounded-xl', { 'js-hidden': !!around.image }]}
+				data-map-panel
+			>
+				<iframe
+					title={ui.mapTitle}
+					class="h-96 w-full border-0 sm:h-[32rem]"
+					loading="lazy"
+					src={around.image ? undefined : mapSrc}
+					data-src={mapSrc}
+				></iframe>
+			</div>
 		</div>
+		<script is:inline>
+			(() => {
+				const root = document.querySelector('[data-map-tabs]');
+				const list = root && root.querySelector('[data-tablist]');
+				if (!list) return;
+				const tabs = [...list.querySelectorAll('[data-tab]')];
+				const panels = { illustrated: document.getElementById('map-panel-illustrated'), map: document.getElementById('map-panel-map') };
+				const iframe = panels.map.querySelector('iframe');
+				const show = (id) => {
+					tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === id)));
+					panels.illustrated.hidden = id !== 'illustrated';
+					panels.map.hidden = id !== 'map';
+					if (id === 'map' && !iframe.src) iframe.src = iframe.dataset.src;
+				};
+				list.classList.remove('hidden');
+				list.classList.add('flex');
+				panels.map.classList.remove('js-hidden');
+				show('illustrated');
+				tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.tab)));
+			})();
+		</script>
+		<style>
+			.js-hidden {
+				display: none;
+			}
+		</style>
 	</section>
 
 	<!-- Newsletter -->
