@@ -21,6 +21,17 @@
       "description_en": "This is a test description",
       "image": "/images/rumobeach/food-3.jpg",
       "link": ""
+    },
+    {
+      "date": "2027-01-02",
+      "endDate": "",
+      "time": "10:00",
+      "title_pt": "New Years Dive",
+      "title_en": "New Years Dive",
+      "description_pt": "New Years Dive at Rumo Beach!",
+      "description_en": "New Years Dive at Rumo Beach!",
+      "image": "/images/rumobeach/drone-beach-1.jpg",
+      "link": ""
     }
   ]
 }
